@@ -11,7 +11,7 @@ sys_apps=(
 
 # External applications (those in the Applications path)
 apps=(
-    "Zen Browser"
+    "Zen"
     "Obsidian"
     "Sublime Merge"
     "Bitwarden"

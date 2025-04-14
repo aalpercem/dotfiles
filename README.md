@@ -46,7 +46,7 @@ By using these scripts, you acknowledge and accept the risk of potential data lo
    ```
 3. Run the installation script:
    ```sh
-   sudo ./install.sh
+   ./install.sh
    ```
 
 This script will:
