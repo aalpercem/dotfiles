@@ -11,12 +11,9 @@ sys_apps=(
 
 # External applications (those in the Applications path)
 apps=(
-    "Zen"
     "Obsidian"
     "Sublime Merge"
     "Bitwarden"
-    "Microsoft Teams"
-    "Slack"
 )
 
 # Add system applications
