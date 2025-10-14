@@ -32,8 +32,6 @@ packages=(
     "bash"
     "zsh"
     "git"
-    "go"
-    "hugo"
     "node"
     "ca-certificates"
     "swiftformat"
@@ -93,27 +91,18 @@ fi
 # Define an array of applications to install using Homebrew Cask.
 apps=(
     "google-chrome"
-    "zen-browser"
-    "bitwarden"
     "logitech-g-hub"
     "raycast"
     "warp"
     "obsidian"
     "stats"
-    "xcodes"
     "github"
     "sublime-merge"
     "whatsapp"
-    "slack"
-    "microsoft-teams"
-    "webex"
     "sf-symbols"
     "cloudflare-warp"
     "localsend"
     "vlc"
-    "omnidisksweeper"
-    "discord"
-    "deepl"
 )
 
 # Loop over the array to install each application.
@@ -168,12 +157,6 @@ brew cleanup
 echo "Sign in to Google Chrome. Press enter to continue..."
 read
 
-echo "Sign in to Zen Browser. Press enter to continue..."
-read
-
-echo "Sign in to Bitwarden. Press enter to continue..."
-read
-
 echo "Configure Logitech G Hub for your devices. Don't forget to grant input monitoring access to Logitech G Hub. Press Enter to continue..."
 read
 
@@ -189,9 +172,6 @@ read
 echo "Installed Stats. Press enter to continue..."
 read
 
-echo "Installed Xcodes. Press enter to continue..."
-read
-
 echo "Sign in to GitHub Desktop. Press enter to continue..."
 read
 
@@ -199,15 +179,6 @@ echo "Open Sublime Merge and and set up your preferences. Press enter to continu
 read
 
 echo "Installed WhatsApp. Press enter to continue..."
-read
-
-echo "Sign in to Slack. Press enter to continue..."
-read
-
-echo "Sign in to Microsoft Teams. Press enter to continue..."
-read
-
-echo "Sign in to Webex. Press enter to continue..."
 read
 
 echo "Installed SF Symbols. Press enter to continue..."
@@ -220,13 +191,4 @@ echo "Installed Localsend. Press enter to continue..."
 read
 
 echo "Installed VLC. Press enter to continue..."
-read
-
-echo "Installed OmniDiskSweeper. Press enter to continue..."
-read
-
-echo "Sign in to Discord. Press enter to continue..."
-read
-
-echo "Sign in to DeepL. Press enter to continue..."
 read
