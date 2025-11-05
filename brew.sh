@@ -103,6 +103,7 @@ apps=(
     "cloudflare-warp"
     "localsend"
     "vlc"
+    "raindropio"
 )
 
 # Loop over the array to install each application.
@@ -191,4 +192,7 @@ echo "Installed Localsend. Press enter to continue..."
 read
 
 echo "Installed VLC. Press enter to continue..."
+read
+
+echo "Installed Raindrop io. Import your data from icloud. Press enter to continue..."
 read
