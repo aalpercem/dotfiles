@@ -31,6 +31,7 @@ brew cleanup
 
 # Required tap(s)
 brew tap anomalyco/tap
+brew tap nikitabobko/tap
 
 # Define an array of packages to install using Homebrew.
 packages=(
@@ -97,6 +98,7 @@ fi
 
 # Define an array of applications to install using Homebrew Cask.
 apps=(
+    "aerospace"
     "google-chrome"
     "logitech-g-hub"
     "stats"

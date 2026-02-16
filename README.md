@@ -67,6 +67,7 @@ After installation, complete the manual steps in `POST_INSTALL_CHECKLIST.md`.
 -  `.bash_prompt` & `.zprompt`: Custom prompt setup for Bash and Zsh.
 -  `.bash_profile`: Setting system-wide environment variables
 -  `.aliases`: Aliases for common commands. Some are personalized to my machines specifically (e.g. the 'yt' alias opening my YouTube Scripts')
+-  `.aerospace.toml`: AeroSpace window manager configuration (symlinked to `~/.aerospace.toml`).
 -  `.private`: This is a file you'll create locally to hold private information and shouldn't be uploaded to version control
 -  `settings/`: Directory containing general app configurations and settings.
 

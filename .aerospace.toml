@@ -1,0 +1,139 @@
+config-version = 2
+start-at-login = true
+
+after-startup-command = [
+  'exec-and-forget open -a /Applications/WezTerm.app',
+  'exec-and-forget open -a /Applications/Google\ Chrome.app',
+  'exec-and-forget open -a /Applications/Xcode.app',
+  'exec-and-forget open -a /Applications/Simulator.app',
+  'exec-and-forget open -a /Applications/Sublime\ Merge.app',
+  'exec-and-forget open -a /Applications/Docker.app'
+]
+
+# Keep behavior predictable and minimal.
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Keep these workspaces alive even when empty.
+persistent-workspaces = ['1', '2', '3', '4']
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = 'layout tiling'
+
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.sublimemerge'
+run = ['move-node-to-workspace 4', 'layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.docker.docker'
+run = 'move-node-to-workspace 4'
+
+[key-mapping]
+preset = 'qwerty'
+
+[gaps]
+inner.horizontal = 0
+inner.vertical = 0
+outer.left = 0
+outer.bottom = 0
+outer.top = 0
+outer.right = 0
+
+[mode.main.binding]
+# Focus
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+alt-backtick = 'focus-back-and-forth'
+
+# Move window
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Resize (works for tiling windows)
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+
+# Workspace
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-tab = 'focus-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# Move window to workspace
+alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+
+# Tiling/floating toggle
+alt-ctrl-f = 'layout floating tiling'
+alt-shift-f = 'fullscreen'
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+# Useful app launch
+alt-w = 'exec-and-forget open -a /Applications/WezTerm.app'
+alt-b = 'exec-and-forget open -a /Applications/Google Chrome.app'
+alt-x = 'exec-and-forget open -a /Applications/Xcode.app'
+alt-d = 'exec-and-forget open -a /Applications/Docker.app'
+alt-s = 'exec-and-forget open -a "/Applications/Sublime Merge.app"'
+
+alt-shift-semicolon = 'mode service'
+# alt-shift-enter = 'mode apps'
+
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+
+#[mode.apps.binding]
+#alt-w = ['exec-and-forget open -a /Applications/WezTerm.app', 'mode main']
+#alt-b = ['exec-and-forget open -a /Applications/Google Chrome.app', 'mode main']
+#alt-x = ['exec-and-forget open -a /Applications/Xcode.app', 'mode main']
+#alt-d = ['exec-and-forget open -a /Applications/Docker.app', 'mode main']
+#alt-s = ['exec-and-forget open -a "/Applications/Sublime Merge.app"', 'mode main']
+
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'secondary'
+3 = 'main'
+4 = 'main'

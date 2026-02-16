@@ -16,3 +16,16 @@ Thumbs.db
 # Private Information
 .private
 .gitconfig
+
+# Local agent/runtime state
+.serena/
+
+# OpenCode local secrets/state
+.config/opencode/opencode.json
+.config/opencode/node_modules/
+.config/opencode/package.json
+.config/opencode/bun.lock
+
+# Prevent nested repo metadata from accidental add
+.config/nvim/.git/
+.config/nvim/.gitignore
