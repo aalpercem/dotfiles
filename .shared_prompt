@@ -29,7 +29,6 @@ prompt_git() {
 }
 
 # Using tput for colors and formatting.
-tput sgr0 # reset colors
 bold=$(tput bold)
 reset=$(tput sgr0)
 blue=$(tput setaf 153)

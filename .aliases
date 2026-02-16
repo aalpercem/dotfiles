@@ -37,3 +37,7 @@ alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && kill
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 alias clean="osascript -e 'tell application \"Finder\" to empty the trash' 2>/dev/null; rm -rf ~/Downloads/*"
+
+# OpenCode remote shortcuts
+alias opencode-start="/Users/cemozturk/Developer/personal/opencode-remote/scripts/opencode-start"
+alias opencode-stop="/Users/cemozturk/Developer/personal/opencode-remote/scripts/opencode-stop"
