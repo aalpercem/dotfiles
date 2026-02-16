@@ -49,6 +49,14 @@ if.app-id = 'com.apple.mail'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.SystemSettings'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.sublimemerge'
 run = ['move-node-to-workspace 4', 'layout floating']
 

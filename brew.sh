@@ -113,6 +113,7 @@ apps=(
     "docker-desktop"
     "hammerspoon"
     "wezterm"
+    "font-jetbrains-mono-nerd-font"
 )
 
 # Loop over the array to install each application.
