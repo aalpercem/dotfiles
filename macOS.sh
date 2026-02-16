@@ -1,10 +1,12 @@
 #!/usr/bin/env zsh
 
-xcode-select --install
+set -euo pipefail
 
-echo "Complete the installation of Xcode Command Line Tools before proceeding."
-echo "Press enter to continue..."
-read
+if ! xcode-select -p &>/dev/null; then
+    echo "Xcode Command Line Tools not found. Triggering installer..."
+    xcode-select --install || true
+    echo "Continue after installer finishes if any tool later fails."
+fi
 
 # https://macos-defaults.com/
 # -- Dock Defaults --
@@ -83,7 +85,7 @@ defaults write com.apple.dt.Xcode "ShowBuildOperationDuration" -bool "true" && k
 
 # Set location for screenshots
 # https://macos-defaults.com/screenshots/
-mkdir "${HOME}/Desktop/Screenshots"
+mkdir -p "${HOME}/Desktop/Screenshots"
 defaults write com.apple.screencapture location "${HOME}/Desktop/Screenshots" && killall SystemUIServer
 
 # -- TextEdit Defaults --
@@ -114,25 +116,4 @@ tell application "System Events"
 end tell
 EOF
 
-# -- Reminders for full setup --
-
-echo "To set the 'Show Desktop' action in the bottom-left corner, please go to System Settings > Desktop & Dock > Hot Corners... and set the left-bottom corner to 'Show Desktop'."
-read
-
-echo "To set the 'Dock Magnification', please go to System Settings > Desktop & Dock > Magnification and set it to 'Large'."
-read
-
-echo "To enable 'Tap to Click', go to System Settings > Trackpad > Point & Click and set it to true 'Tap to Click'."
-read
-
-echo "To adjust the display resolution and position, go to System Settings > Displays and modify the resolution and arrangement settings."
-read
-
-echo "To add the 'cemozturk' directory to the Dock, open Finder, navigate to the 'cemozturk' directory, right-click on it, and select 'Add to Dock'."
-read
-
-echo "To add the 'cemozturk' or 'Developer' directory to the Finder Sidebar, open Finder, go to Finder Settings > Sidebar, and check 'User' under the Favorites section."
-read
-
-echo "Don't forget to create additional desktops for each display"
-read
+echo "macOS defaults applied."

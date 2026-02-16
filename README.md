@@ -49,12 +49,16 @@ By using these scripts, you acknowledge and accept the risk of potential data lo
    ./install.sh
    ```
 
+The installer runs in non-interactive mode.
+
 This script will:
 
 -  Create symlinks for dotfiles (`.bashrc`, `.zshrc`, etc.)
 -  Run macOS-specific configurations
 -  Install Homebrew packages and casks
 -  Configure system preferences and defaults
+
+After installation, complete the manual steps in `POST_INSTALL_CHECKLIST.md`.
 
 ## Configuration Files
 

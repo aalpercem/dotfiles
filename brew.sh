@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+set -euo pipefail
+
 # Install Homebrew if it isn't already installed
 if ! command -v brew &>/dev/null; then
     echo "Homebrew not installed. Installing Homebrew."
@@ -21,11 +23,14 @@ if ! command -v brew &>/dev/null; then
     exit 1
 fi
 
-# Update Homebrew and Upgrade any already-installed formulae
+# Update Homebrew and upgrade existing formulae/casks
 brew update
 brew upgrade
 brew upgrade --cask
 brew cleanup
+
+# Required tap(s)
+brew tap anomalyco/tap
 
 # Define an array of packages to install using Homebrew.
 packages=(
@@ -37,11 +42,19 @@ packages=(
     "swiftformat"
     "swiftlint"
     "zsh-autosuggestions"
+    "zsh-syntax-highlighting"
+    "powerlevel10k"
+    "docker"
+    "docker-compose"
+    "neovim"
+    "ripgrep"
+    "make"
+    "opencode"
 )
 
 # Loop over the array to install each application.
 for package in "${packages[@]}"; do
-    if brew list --formula | grep -q "^$package\$"; then
+    if brew list --formula "$package" &>/dev/null; then
         echo "$package is already installed. Skipping..."
     else
         echo "Installing $package..."
@@ -69,10 +82,7 @@ fi
 # Git config name
 current_name=$($(brew --prefix)/bin/git config --global --get user.name)
 if [ -z "$current_name" ]; then
-    echo "Please enter your FULL NAME for Git configuration:"
-    read git_user_name
-    $(brew --prefix)/bin/git config --global user.name "$git_user_name"
-    echo "Git user.name has been set to $git_user_name"
+    echo "Git user.name is not set. Skipping (non-interactive mode)."
 else
     echo "Git user.name is already set to '$current_name'. Skipping configuration."
 fi
@@ -80,10 +90,7 @@ fi
 # Git config email
 current_email=$($(brew --prefix)/bin/git config --global --get user.email)
 if [ -z "$current_email" ]; then
-    echo "Please enter your EMAIL for Git configuration:"
-    read git_user_email
-    $(brew --prefix)/bin/git config --global user.email "$git_user_email"
-    echo "Git user.email has been set to $git_user_email"
+    echo "Git user.email is not set. Skipping (non-interactive mode)."
 else
     echo "Git user.email is already set to '$current_email'. Skipping configuration."
 fi
@@ -92,9 +99,6 @@ fi
 apps=(
     "google-chrome"
     "logitech-g-hub"
-    "raycast"
-    "warp"
-    "obsidian"
     "stats"
     "github"
     "sublime-merge"
@@ -104,11 +108,14 @@ apps=(
     "localsend"
     "vlc"
     "raindropio"
+    "docker-desktop"
+    "hammerspoon"
+    "wezterm"
 )
 
 # Loop over the array to install each application.
 for app in "${apps[@]}"; do
-    if brew list --cask | grep -q "^$app\$"; then
+    if brew list --cask "$app" &>/dev/null; then
         echo "$app is already installed. Skipping..."
     else
         echo "Installing $app..."
@@ -142,57 +149,8 @@ done
 #    fi
 # done
 
-# Once fonts are installed, import your Terminal Profile
-# echo "Import your terminal settings..."
-# echo "Terminal -> Settings -> Profiles -> Import..."
-# echo "Import from ${HOME}/dotfiles/settings/Pro.terminal"
-# echo "Press enter to continue..."
-# read
-
 # Update and clean up again for safe measure
 brew update
 brew upgrade
 brew upgrade --cask
 brew cleanup
-
-echo "Sign in to Google Chrome. Press enter to continue..."
-read
-
-echo "Configure Logitech G Hub for your devices. Don't forget to grant input monitoring access to Logitech G Hub. Press Enter to continue..."
-read
-
-echo "Sign in to Raycast. Import your Raycast config located in ~/dotfiles/settings/RaycastConfig.rayconfig. Then set up your Raycast scripts located in ~/dotfiles/settings/. Move the following .sh files to the raycast-scripts folder inside your Developer directory: open-business-apps.sh, close-business-apps.sh, speedtest.sh. Import data encryption password is your computer password. Press enter to continue..."
-read
-
-echo "Installed Warp. Press enter to continue..."
-read
-
-echo "Sign in to Obsidian. Press enter to continue..."
-read
-
-echo "Installed Stats. Press enter to continue..."
-read
-
-echo "Sign in to GitHub Desktop. Press enter to continue..."
-read
-
-echo "Open Sublime Merge and and set up your preferences. Press enter to continue..."
-read
-
-echo "Installed WhatsApp. Press enter to continue..."
-read
-
-echo "Installed SF Symbols. Press enter to continue..."
-read
-
-echo "Installed Cloudflare Warp. Press enter to continue..."
-read
-
-echo "Installed Localsend. Press enter to continue..."
-read
-
-echo "Installed VLC. Press enter to continue..."
-read
-
-echo "Installed Raindrop io. Import your data from icloud. Press enter to continue..."
-read

@@ -5,6 +5,8 @@
 # And also installs Homebrew Packages and Casks (Apps)
 ############################
 
+set -euo pipefail
+
 # dotfiles directory
 dotfiledir="${HOME}/dotfiles"
 
@@ -27,4 +29,5 @@ done
 # Run the Homebrew Script
 ./brew.sh
 
-echo "Installation Complete!"
+echo "Installation complete."
+echo "Post-install checklist: ${dotfiledir}/POST_INSTALL_CHECKLIST.md"
