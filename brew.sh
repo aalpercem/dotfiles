@@ -32,6 +32,8 @@ brew cleanup
 # Required tap(s)
 brew tap anomalyco/tap
 brew tap nikitabobko/tap
+brew tap gromgit/brewtils
+brew tap arimxyer/tap
 
 # Define an array of packages to install using Homebrew.
 packages=(
@@ -51,6 +53,9 @@ packages=(
     "ripgrep"
     "make"
     "opencode"
+    "taproom"
+    "models"
+    "llmfit"
 )
 
 # Loop over the array to install each application.
