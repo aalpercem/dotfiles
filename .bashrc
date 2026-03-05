@@ -7,3 +7,8 @@ for file in ~/.{bash_prompt,aliases,private}; do
 done;
 unset file;
 . "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/cemozturk/.lmstudio/bin"
+# End of LM Studio CLI section
+

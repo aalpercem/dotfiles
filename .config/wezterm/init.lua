@@ -6,17 +6,12 @@ local config = wezterm.config_builder()
 
 -- General
 config.enable_tab_bar = false
+config.window_decorations = "RESIZE"
 
 config.font_size = 24
 config.color_scheme = "tokyonight_night"
 
 config.native_macos_fullscreen_mode = true
-
-wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
-  window:gui_window():set_position(0, 0)
-  window:gui_window():toggle_fullscreen()
-end)
 
 config.keys = {
   {
