@@ -24,6 +24,10 @@ defaults write com.apple.dock "tilesize" -int "75" && killall Dock
 # https://macos-defaults.com/dock/show-recents.html
 defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
 
+defaults write com.apple.dock "autohide-delay" -float 0 && killall Dock
+
+defaults write com.apple.dock "autohide-time-modifier" -float 0.75 && killall Dock
+
 ## Add Persistent Apps to Dock
 ./add-dock-items.sh
 

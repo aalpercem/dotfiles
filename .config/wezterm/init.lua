@@ -7,9 +7,10 @@ local config = wezterm.config_builder()
 -- General
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
+config.window_close_confirmation = "NeverPrompt"
 
 config.font_size = 24
-config.color_scheme = "tokyonight_night"
+config.color_scheme = "rose-pine"
 
 config.native_macos_fullscreen_mode = true
 
