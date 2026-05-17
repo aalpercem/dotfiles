@@ -1,10 +1,8 @@
 autoload -Uz colors && colors
 setopt PROMPT_SUBST
 
-# Load dotfiles:
-# for file in ~/.{zprompt,aliases,private}; do
-#    [ -r "$file" ] && [ -f "$file" ] && source "$file"
-#done
+# Load aliases
+[ -r "$HOME/.aliases" ] && [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 unset file
 
 . "$HOME/.local/bin/env"

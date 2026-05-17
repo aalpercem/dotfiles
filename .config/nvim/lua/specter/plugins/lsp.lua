@@ -26,15 +26,17 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-          map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
-          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+          map('gd', require('telescope.builtin').lsp_definitions, 'Definition')
+          map('gD', vim.lsp.buf.declaration, 'Declaration')
+          map('gr', require('telescope.builtin').lsp_references, 'References')
+          map('gi', require('telescope.builtin').lsp_implementations, 'Implementation')
+          map('gy', require('telescope.builtin').lsp_type_definitions, 'Type Definition')
+          map('gO', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
+          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>ca', vim.lsp.buf.code_action, 'Code [A]ction', { 'n', 'x' })
+          map('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
+          map(']d', vim.diagnostic.goto_next, 'Next Diagnostic')
 
           local function client_supports_method(client, method, bufnr)
             if vim.fn.has 'nvim-0.11' == 1 then
@@ -116,13 +118,23 @@ return {
           },
         },
         sourcekit = {
-          cmd = { 'sourcekit-lsp' },
+          -- Use xcrun to find the absolute path to sourcekit-lsp. This is more
+          -- reliable than relying on PATH, especially when multiple Xcode
+          -- toolchains are installed.
+          cmd = { vim.trim(vim.fn.system 'xcrun -f sourcekit-lsp') },
           filetypes = { 'swift' },
+          -- Root markers tell Neovim where the project root is. For Swift Package
+          -- Manager projects, Package.swift is the root. For Xcode projects,
+          -- .xcodeproj or .xcworkspace marks the root. xcode-build-server creates
+          -- buildServer.json in the root directory; if present, it takes priority.
           root_markers = {
+            'buildServer.json',
+            '.xcodeproj',
+            '.xcworkspace',
+            'Package.swift',
+            '.sourcekit-lsp',
             '.git',
             'compile_commands.json',
-            '.sourcekit-lsp',
-            'Package.swift',
           },
           get_language_id = function(_, ftype)
             return ftype

@@ -3,10 +3,11 @@ start-at-login = true
 
 after-startup-command = [
   'exec-and-forget open -a /Applications/WezTerm.app',
-  'exec-and-forget open -a /Applications/Google\ Chrome.app',
-  'exec-and-forget open -a /Applications/Xcode.app',
-  'exec-and-forget open -a /Applications/Simulator.app',
-  'exec-and-forget open -a /Applications/Sublime\ Merge.app',
+  'exec-and-forget open -a /Applications/LibreWolf.app',
+  # 'exec-and-forget open -a /Applications/Google\ Chrome.app',
+  # 'exec-and-forget open -a /Applications/Xcode.app',
+  # 'exec-and-forget open -a /Applications/Simulator.app',
+  # 'exec-and-forget open -a /Applications/Sublime\ Merge.app',
   'exec-and-forget open -a /Applications/Docker.app'
 ]
 
@@ -22,7 +23,7 @@ persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-run = 'move-node-to-workspace 1'
+run = ['move-node-to-workspace 1', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.dt.Xcode'
@@ -54,6 +55,10 @@ if.app-id = 'com.apple.SystemSettings'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'org.mozilla.librewolf'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
 if.app-id = 'com.sublimemerge'
 run = ['move-node-to-workspace 4', 'layout floating']
 
@@ -71,81 +76,81 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = 0
 inner.vertical = 0
-outer.left = 0
-outer.bottom = 0
-outer.top = 0
-outer.right = 0
+outer.left = 16
+outer.bottom = 16
+outer.top = 16
+outer.right = 16
 
 [mode.main.binding]
-# Focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+# Focus — Left Alt + y/u/i/o
+# y = left (işaret parmak j'den sola), u = down (işaret), i = up (orta), o = right (yüzük)
+alt-y = 'focus left'
+alt-u = 'focus down'
+alt-i = 'focus up'
+alt-o = 'focus right'
 alt-backtick = 'focus-back-and-forth'
 
 # Move window
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+alt-shift-y = 'move left'
+alt-shift-u = 'move down'
+alt-shift-i = 'move up'
+alt-shift-o = 'move right'
 
-# Resize (works for tiling windows)
+# Resize
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 
-# Workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
+# Workspace — Caps Lock (Ctrl+Opt via Karabiner) + homerow
+# Sağ el homerow: h,j,k,l,; + üst sıra: u,i,o,p
+ctrl-alt-h = 'workspace 1'
+ctrl-alt-j = 'workspace 2'
+ctrl-alt-k = 'workspace 3'
+ctrl-alt-l = 'workspace 4'
+ctrl-alt-semicolon = 'workspace 5'
+ctrl-alt-u = 'workspace 6'
+ctrl-alt-i = 'workspace 7'
+ctrl-alt-o = 'workspace 8'
+ctrl-alt-p = 'workspace 9'
+
 alt-tab = 'focus-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# Move window to workspace
-alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
-alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
-alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
-alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
-alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
-alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
-alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
-alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
-alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
-
-# Tiling/floating toggle
+# Layout
 alt-ctrl-f = 'layout floating tiling'
-alt-shift-f = 'fullscreen'
+alt-shift-enter = 'fullscreen'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-# Useful app launch
-alt-w = 'exec-and-forget open -a /Applications/WezTerm.app'
-alt-b = 'exec-and-forget open -a /Applications/Google Chrome.app'
-alt-x = 'exec-and-forget open -a /Applications/Xcode.app'
-alt-d = 'exec-and-forget open -a /Applications/Docker.app'
-alt-s = 'exec-and-forget open -a "/Applications/Sublime Merge.app"'
-
-alt-shift-semicolon = 'mode service'
-# alt-shift-enter = 'mode apps'
+# Service mode entry — Caps Lock + s
+ctrl-alt-s = 'mode service'
 
 [mode.service.binding]
+# Move window to workspace + auto exit to main mode
+# Both bare key (Caps Lock released) and ctrl-alt-key (Caps Lock held) variants
+h = ['move-node-to-workspace 1 --focus-follows-window', 'mode main']
+ctrl-alt-h = ['move-node-to-workspace 1 --focus-follows-window', 'mode main']
+j = ['move-node-to-workspace 2 --focus-follows-window', 'mode main']
+ctrl-alt-j = ['move-node-to-workspace 2 --focus-follows-window', 'mode main']
+k = ['move-node-to-workspace 3 --focus-follows-window', 'mode main']
+ctrl-alt-k = ['move-node-to-workspace 3 --focus-follows-window', 'mode main']
+l = ['move-node-to-workspace 4 --focus-follows-window', 'mode main']
+ctrl-alt-l = ['move-node-to-workspace 4 --focus-follows-window', 'mode main']
+semicolon = ['move-node-to-workspace 5 --focus-follows-window', 'mode main']
+ctrl-alt-semicolon = ['move-node-to-workspace 5 --focus-follows-window', 'mode main']
+u = ['move-node-to-workspace 6 --focus-follows-window', 'mode main']
+ctrl-alt-u = ['move-node-to-workspace 6 --focus-follows-window', 'mode main']
+i = ['move-node-to-workspace 7 --focus-follows-window', 'mode main']
+ctrl-alt-i = ['move-node-to-workspace 7 --focus-follows-window', 'mode main']
+o = ['move-node-to-workspace 8 --focus-follows-window', 'mode main']
+ctrl-alt-o = ['move-node-to-workspace 8 --focus-follows-window', 'mode main']
+p = ['move-node-to-workspace 9 --focus-follows-window', 'mode main']
+ctrl-alt-p = ['move-node-to-workspace 9 --focus-follows-window', 'mode main']
+
+# Regular service mode commands
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
-
-#[mode.apps.binding]
-#alt-w = ['exec-and-forget open -a /Applications/WezTerm.app', 'mode main']
-#alt-b = ['exec-and-forget open -a /Applications/Google Chrome.app', 'mode main']
-#alt-x = ['exec-and-forget open -a /Applications/Xcode.app', 'mode main']
-#alt-d = ['exec-and-forget open -a /Applications/Docker.app', 'mode main']
-#alt-s = ['exec-and-forget open -a "/Applications/Sublime Merge.app"', 'mode main']
 
 [workspace-to-monitor-force-assignment]
 1 = 'main'

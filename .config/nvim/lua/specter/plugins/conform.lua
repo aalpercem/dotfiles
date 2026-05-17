@@ -28,6 +28,9 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        -- SwiftFormat: formats Swift code on save. Install via:
+        --   brew install swiftformat
+        swift = { 'swiftformat' },
       },
     },
   },

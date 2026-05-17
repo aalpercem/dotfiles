@@ -26,6 +26,9 @@ Thumbs.db
 .config/opencode/package.json
 .config/opencode/bun.lock
 
+# Karabiner auto-backups
+.config/karabiner/automatic_backups/
+
 # Prevent nested repo metadata from accidental add
 .config/nvim/.git/
 .config/nvim/.gitignore

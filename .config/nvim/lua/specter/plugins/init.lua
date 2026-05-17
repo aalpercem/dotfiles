@@ -15,4 +15,9 @@ return {
   { import = 'specter.plugins.conform' },
   { import = 'specter.plugins.cmp' },
   { import = 'specter.plugins.guess-indent' },
+  -- iOS / macOS development plugins
+  { import = 'specter.plugins.xcodebuild' },
+  { import = 'specter.plugins.dap' },
+  { import = 'specter.plugins.nvimtree' },
+  { import = 'specter.plugins.snacks' },
 }
