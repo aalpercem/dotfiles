@@ -139,7 +139,7 @@ end
 config.keys = {
 	{
 		key = "w",
-		mods = "CMD",
+		mods = "OPT",
 		action = wezterm.action.CloseCurrentPane({ confirm = false }),
 	},
 	{
