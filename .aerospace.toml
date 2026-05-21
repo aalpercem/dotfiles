@@ -102,8 +102,8 @@ alt-equal = 'resize smart +50'
 
 # Workspace — Caps Lock (Ctrl+Opt via Karabiner) + homerow
 # Sağ el homerow: h,j,k,l,; + üst sıra: u,i,o,p
-ctrl-alt-h = 'workspace 1'
-ctrl-alt-j = 'workspace 2'
+ctrl-alt-h = 'workspace 2'
+ctrl-alt-j = 'workspace 1'
 ctrl-alt-k = 'workspace 3'
 ctrl-alt-l = 'workspace 4'
 ctrl-alt-semicolon = 'workspace 5'
@@ -127,9 +127,9 @@ ctrl-alt-s = 'mode service'
 [mode.service.binding]
 # Move window to workspace + auto exit to main mode
 # Both bare key (Caps Lock released) and ctrl-alt-key (Caps Lock held) variants
-h = ['move-node-to-workspace 1 --focus-follows-window', 'mode main']
+j = ['move-node-to-workspace 1 --focus-follows-window', 'mode main']
 ctrl-alt-h = ['move-node-to-workspace 1 --focus-follows-window', 'mode main']
-j = ['move-node-to-workspace 2 --focus-follows-window', 'mode main']
+h = ['move-node-to-workspace 2 --focus-follows-window', 'mode main']
 ctrl-alt-j = ['move-node-to-workspace 2 --focus-follows-window', 'mode main']
 k = ['move-node-to-workspace 3 --focus-follows-window', 'mode main']
 ctrl-alt-k = ['move-node-to-workspace 3 --focus-follows-window', 'mode main']
