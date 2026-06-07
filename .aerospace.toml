@@ -2,6 +2,7 @@ config-version = 2
 start-at-login = true
 
 after-startup-command = [
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
   'exec-and-forget open -a /Applications/WezTerm.app',
   'exec-and-forget open -a /Applications/LibreWolf.app',
   # 'exec-and-forget open -a /Applications/Google\ Chrome.app',
@@ -121,8 +122,8 @@ alt-shift-enter = 'fullscreen'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-# Service mode entry — Caps Lock + s
-ctrl-alt-s = 'mode service'
+# Service mode entry — Caps Lock + space
+ctrl-alt-space = 'mode service'
 
 [mode.service.binding]
 # Move window to workspace + auto exit to main mode

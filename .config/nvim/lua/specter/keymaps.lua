@@ -1,3 +1,5 @@
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode (jk)' })
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
