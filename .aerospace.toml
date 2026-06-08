@@ -2,6 +2,7 @@ config-version = 2
 start-at-login = true
 
 after-startup-command = [
+  'exec-and-forget sketchybar',
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
   'exec-and-forget open -a /Applications/WezTerm.app',
   'exec-and-forget open -a /Applications/LibreWolf.app',
@@ -10,6 +11,10 @@ after-startup-command = [
   # 'exec-and-forget open -a /Applications/Simulator.app',
   # 'exec-and-forget open -a /Applications/Sublime\ Merge.app',
   'exec-and-forget open -a /Applications/Docker.app'
+]
+
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 # Keep behavior predictable and minimal.
@@ -75,11 +80,11 @@ run = ['move-node-to-workspace 4', 'layout floating']
 preset = 'qwerty'
 
 [gaps]
-inner.horizontal = 0
-inner.vertical = 0
+inner.horizontal = 16
+inner.vertical = 16
 outer.left = 16
 outer.bottom = 16
-outer.top = 16
+outer.top = 56
 outer.right = 16
 
 [mode.main.binding]
