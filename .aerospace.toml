@@ -10,7 +10,7 @@ after-startup-command = [
   # 'exec-and-forget open -a /Applications/Xcode.app',
   # 'exec-and-forget open -a /Applications/Simulator.app',
   # 'exec-and-forget open -a /Applications/Sublime\ Merge.app',
-  'exec-and-forget open -a /Applications/Docker.app'
+  # 'exec-and-forget open -a /Applications/Docker.app'
 ]
 
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -25,7 +25,7 @@ default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # Keep these workspaces alive even when empty.
-persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+persistent-workspaces = ['1', '2', '3', '4', '5']
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
@@ -88,35 +88,31 @@ outer.top = 56
 outer.right = 16
 
 [mode.main.binding]
-# Focus — Left Alt + y/u/i/o
-# y = left (işaret parmak j'den sola), u = down (işaret), i = up (orta), o = right (yüzük)
-alt-y = 'focus left'
-alt-u = 'focus down'
-alt-i = 'focus up'
-alt-o = 'focus right'
+# Focus — Caps Lock hold (ctrl-alt) + n m , .
+ctrl-alt-n = 'focus left'
+ctrl-alt-m = 'focus down'
+ctrl-alt-comma = 'focus up'
+ctrl-alt-period = 'focus right'
 alt-backtick = 'focus-back-and-forth'
 
-# Move window
-alt-shift-y = 'move left'
-alt-shift-u = 'move down'
-alt-shift-i = 'move up'
-alt-shift-o = 'move right'
+# Move window — Caps Lock hold (ctrl-alt) + u i o p
+ctrl-alt-u = 'move left'
+ctrl-alt-i = 'move down'
+ctrl-alt-o = 'move up'
+ctrl-alt-p = 'move right'
 
 # Resize
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 
-# Workspace — Caps Lock (Ctrl+Opt via Karabiner) + homerow
-# Sağ el homerow: h,j,k,l,; + üst sıra: u,i,o,p
+# Workspace — Caps Lock hold (ctrl-alt) + homerow
+# Sağ el homerow: h,j,k,l,;
 ctrl-alt-h = 'workspace 2'
 ctrl-alt-j = 'workspace 1'
 ctrl-alt-k = 'workspace 3'
 ctrl-alt-l = 'workspace 4'
 ctrl-alt-semicolon = 'workspace 5'
-ctrl-alt-u = 'workspace 6'
-ctrl-alt-i = 'workspace 7'
-ctrl-alt-o = 'workspace 8'
-ctrl-alt-p = 'workspace 9'
+# workspace 6-9 removed — ctrl-alt-u/i/o/p repurposed for move
 
 alt-tab = 'focus-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
@@ -143,14 +139,7 @@ l = ['move-node-to-workspace 4 --focus-follows-window', 'mode main']
 ctrl-alt-l = ['move-node-to-workspace 4 --focus-follows-window', 'mode main']
 semicolon = ['move-node-to-workspace 5 --focus-follows-window', 'mode main']
 ctrl-alt-semicolon = ['move-node-to-workspace 5 --focus-follows-window', 'mode main']
-u = ['move-node-to-workspace 6 --focus-follows-window', 'mode main']
-ctrl-alt-u = ['move-node-to-workspace 6 --focus-follows-window', 'mode main']
-i = ['move-node-to-workspace 7 --focus-follows-window', 'mode main']
-ctrl-alt-i = ['move-node-to-workspace 7 --focus-follows-window', 'mode main']
-o = ['move-node-to-workspace 8 --focus-follows-window', 'mode main']
-ctrl-alt-o = ['move-node-to-workspace 8 --focus-follows-window', 'mode main']
-p = ['move-node-to-workspace 9 --focus-follows-window', 'mode main']
-ctrl-alt-p = ['move-node-to-workspace 9 --focus-follows-window', 'mode main']
+# workspace 6-9 service mode moves removed (uiop repurposed for focus move)
 
 # Regular service mode commands
 esc = ['reload-config', 'mode main']
@@ -164,7 +153,3 @@ backspace = ['close-all-windows-but-current', 'mode main']
 3 = 'main'
 4 = 'main'
 5 = 'main'
-6 = 'main'
-7 = 'main'
-8 = 'main'
-9 = 'main'
