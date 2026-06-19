@@ -22,11 +22,11 @@ local date = sbar.add("item", "center.date", {
 -- Time sits just right of the notch spacer.
 local time = sbar.add("item", "center.time", {
 	position = "center",
-	icon = {
-		string = os.date("%H:%M"),
-		color = colors.accent,
-		padding_left = 5,
-		padding_right = 5,
+		icon = {
+			string = os.date("%I:%M %p"),
+			color = colors.accent,
+			padding_left = 5,
+			padding_right = 5,
 		font = {
 			family = settings.font.text,
 			style = settings.font.style_map["Bold"],
@@ -38,7 +38,7 @@ local time = sbar.add("item", "center.time", {
 })
 
 time:subscribe({ "forced", "routine", "system_woke" }, function(env)
-	time:set({ icon = { string = os.date("%H:%M") } })
+	time:set({ icon = { string = os.date("%I:%M %p") } })
 end)
 
 date:subscribe({ "forced", "routine", "system_woke" }, function(env)

@@ -93,7 +93,7 @@ local function build_space_set(icons, selected, ws_label)
 			padding_right = icon_padding_right,
 		},
 		background = {
-			color = selected and colors.accent or colors.bg2,
+			color = selected and colors.accent or colors.with_alpha(colors.accent, 0.2),
 		},
 	}
 end
@@ -219,7 +219,7 @@ for i, workspace in ipairs(workspaces) do
 			drawing = false,
 		},
 		background = {
-			color = colors.bg2,
+			color = colors.with_alpha(colors.accent, 0.2),
 			corner_radius = 16,
 			height = 19,
 		},

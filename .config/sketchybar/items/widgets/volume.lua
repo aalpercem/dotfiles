@@ -22,7 +22,7 @@ local volume = sbar.add("item", "widgets.volume", {
 			size = 12.0,
 		},
 		color = colors.white,
-		padding_right = 0,
+		padding_right = 16,
 	},
 	updates = true,
 })
