@@ -202,17 +202,15 @@ printf "\n%s\n" "─────────────────────
 info "Resetting shell to macOS default /bin/zsh…"
 
 BREW_ZSH="$(brew --prefix)/bin/zsh"
-CURRENT_SHELL=$(dscl . -read /Users/"$(whoami)" UserShell 2>/dev/null | awk '{print $2}')
 
-if [ "$CURRENT_SHELL" = "$BREW_ZSH" ]; then
-    if grep -Fxq "$BREW_ZSH" /etc/shells; then
-        sudo sed -i '' "\|$BREW_ZSH|d" /etc/shells 2>/dev/null || warn "Could not remove from /etc/shells"
-    fi
-    chsh -s /bin/zsh 2>/dev/null || warn "Could not change shell to /bin/zsh"
-    info "Shell reset to /bin/zsh (effective on next login)."
-else
-    info "Shell already set to $CURRENT_SHELL, not Homebrew zsh. Skipping."
+# Always remove Homebrew zsh from /etc/shells if present
+if grep -Fxq "$BREW_ZSH" /etc/shells 2>/dev/null; then
+    sudo sed -i '' "\|$BREW_ZSH|d" /etc/shells 2>/dev/null || warn "Could not remove from /etc/shells"
 fi
+
+# Always set shell to /bin/zsh
+chsh -s /bin/zsh 2>/dev/null || warn "Could not change shell to /bin/zsh"
+info "Shell reset to /bin/zsh (effective on next login)."
 
 # ═══════════════════════════════════════════════════════
 #  8.  REMOVE SCREENSHOT DIRECTORY

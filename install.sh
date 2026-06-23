@@ -34,8 +34,15 @@ for file in "${files[@]}"; do
     ln -sf "${dotfiledir}/.${file}" "${HOME}/.${file}"
 done
 
-echo "Creating symlink to aerospace.toml in home directory."
-ln -sf "${dotfiledir}/.aerospace.toml" "${HOME}/.aerospace.toml"
+echo -n "Is this a MacBook (single display)? [y/N]: "
+read -r IS_MACBOOK
+if [[ "$IS_MACBOOK" =~ ^[Yy]$ ]]; then
+    echo "Creating symlink to aerospace.macbook.toml (single-display config)"
+    ln -sf "${dotfiledir}/.aerospace.macbook.toml" "${HOME}/.aerospace.toml"
+else
+    echo "Creating symlink to aerospace.toml (multi-display config)"
+    ln -sf "${dotfiledir}/.aerospace.toml" "${HOME}/.aerospace.toml"
+fi
 
 echo "Ensuring ~/.config exists"
 mkdir -p "${HOME}/.config"

@@ -154,10 +154,8 @@ apps=(
     "github"
     "google-chrome"
     "karabiner-elements"
-    "librewolf"
     "localsend"
     "raindropio"
-    "raycast"
     "sf-symbols"
     "stats"
     "sublime-merge"
@@ -206,3 +204,7 @@ brew update || true
 brew upgrade || true
 brew upgrade --cask || true
 brew cleanup || true
+
+# ── Start brew services ──
+echo "Starting brew services…"
+brew services start sketchybar 2>/dev/null || true
