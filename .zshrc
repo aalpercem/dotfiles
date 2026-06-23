@@ -1,6 +1,8 @@
 autoload -Uz colors && colors
 setopt PROMPT_SUBST
 
+export EDITOR="nvim"
+
 # Load aliases
 [ -r "$HOME/.aliases" ] && [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 unset file
