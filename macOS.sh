@@ -109,7 +109,7 @@ defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool tr
 IMAGE_PATH="${HOME}/dotfiles/settings/DesktopWallpaper.jpg"
 
 # AppleScript command to set the desktop background
-osascript <<EOF
+osascript <<EOF || true
 tell application "System Events"
     set desktopCount to count of desktops
     repeat with desktopNumber from 1 to desktopCount
@@ -118,6 +118,6 @@ tell application "System Events"
         end tell
     end repeat
 end tell
-EOF || true
+EOF
 
 echo "macOS defaults applied."
