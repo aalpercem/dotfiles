@@ -2,5 +2,19 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
     "caveman"
-  ]
+  ],
+  "provider": {
+    "local-qwen": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Local Qwen",
+      "options": {
+        "baseURL": "http://127.0.0.1:8000/v1"
+      },
+      "models": {
+        "Qwen3-Coder-Next-nvfp4": {
+          "name": "Qwen3-Coder-Next-nvfp4 (local)"
+        }
+      }
+    }
+  }
 }
