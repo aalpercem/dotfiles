@@ -23,8 +23,9 @@ config.font_size = 25
 -- Color scheme
 config.color_scheme = "rose-pine"
 
--- Rose Pine colors from built-in scheme
+-- Rose Pine colors from built-in scheme (fallback to catppuccin if unavailable)
 local scheme = wezterm.color.get_builtin_schemes()["rose-pine"]
+  or wezterm.color.get_builtin_schemes()["catppuccin-mocha"]
 local c = {
 	base = scheme.background,
 	surface = scheme.ansi[1],
