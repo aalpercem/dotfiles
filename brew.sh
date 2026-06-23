@@ -36,6 +36,7 @@ brew tap gromgit/brewtils
 brew tap arimxyer/tap
 brew tap felixkratz/formulae
 brew tap jesseduffield/lazygit
+brew tap modem-dev/tap
 
 # Define an array of packages to install using Homebrew.
 packages=(
@@ -48,9 +49,13 @@ packages=(
     "docker-compose"
     "eza"
     "fastfetch"
+    "ffmpeg"
     "git"
     "glow"
+    "hf"
+    "hunk"
     "immich-cli"
+    "imagemagick"
     "jq"
     "kanata"
     "lazygit"
@@ -63,12 +68,15 @@ packages=(
     "nowplaying-cli"
     "opencode"
     "pipx"
+    "poppler"
+    "resvg"
     "starship"
     "swiftformat"
     "swiftlint"
     "xcbeautify"
     "xcode-build-server"
     "xcp"
+    "yazi"
     "zsh"
     "zsh-autosuggestions"
     "zsh-syntax-highlighting"
