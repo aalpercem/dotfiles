@@ -130,6 +130,8 @@ end tell
 
 info "Wallpaper reset."
 
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+
 # ═══════════════════════════════════════════════════════
 #  4.  UNINSTALL HOMEBREW PACKAGES
 # ═══════════════════════════════════════════════════════
