@@ -32,4 +32,4 @@ for app in "${apps[@]}"; do
 done
 
 # Restart Dock
-killall Dock
+killall Dock || true

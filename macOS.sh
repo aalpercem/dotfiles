@@ -14,19 +14,19 @@ fi
 # Set the position of the Dock on the screen.
 # Alternatives are "right" (right side) or "bottom" (default bottom position).
 # https://macos-defaults.com/dock/orientation.html
-defaults write com.apple.dock "orientation" -string "left" && killall Dock
+defaults write com.apple.dock "orientation" -string "left" && killall Dock || true
 
 # Set the Dock tile size to 75 pixels and restart the Dock to apply changes.
 # https://macos-defaults.com/dock/tilesize.html
-defaults write com.apple.dock "tilesize" -int "75" && killall Dock
+defaults write com.apple.dock "tilesize" -int "75" && killall Dock || true
 
 # Don't show recently used apps in a separate section of the Dock.
 # https://macos-defaults.com/dock/show-recents.html
-defaults write com.apple.dock "show-recents" -bool "false" && killall Dock
+defaults write com.apple.dock "show-recents" -bool "false" && killall Dock || true
 
-defaults write com.apple.dock "autohide-delay" -float 0 && killall Dock
+defaults write com.apple.dock "autohide-delay" -float 0 && killall Dock || true
 
-defaults write com.apple.dock "autohide-time-modifier" -float 0.75 && killall Dock
+defaults write com.apple.dock "autohide-time-modifier" -float 0.75 && killall Dock || true
 
 ## Add Persistent Apps to Dock
 ./add-dock-items.sh
@@ -38,30 +38,30 @@ defaults write com.apple.dock "autohide-time-modifier" -float 0.75 && killall Do
 
 # Show hidden files in the Finder. You can toggle the value using ⌘ + ⇧ + .
 # https://macos-defaults.com/finder/appleshowallfiles.html
-defaults write com.apple.finder "AppleShowAllFiles" -bool "true" && killall Finder
+defaults write com.apple.finder "AppleShowAllFiles" -bool "true" && killall Finder || true
 
 # Set the default view style for folders without custom setting
 # https://macos-defaults.com/finder/fxpreferredviewstyle.html
-defaults write com.apple.finder "FXPreferredViewStyle" -string "icnv" && killall Finder
+defaults write com.apple.finder "FXPreferredViewStyle" -string "icnv" && killall Finder || true
 
 # Show path bar in the bottom of the Finder windows
 # https://macos-defaults.com/finder/showpathbar.html
-defaults write com.apple.finder "ShowPathbar" -bool "true" && killall Finder
+defaults write com.apple.finder "ShowPathbar" -bool "true" && killall Finder || true
 
 # Choose whether to display a warning when changing a file extension.
 # Do not display the warning
 # https://macos-defaults.com/finder/fxenableextensionchangewarning.html
-defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false" && killall Finder
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false" && killall Finder || true
 
 # Choose the size of Finder sidebar icons
 # https://macos-defaults.com/finder/nstableviewdefaultsizemode.html
-defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "3" && killall Finder
+defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "3" && killall Finder || true
 
 # -- Mouse Defaults --
 
 # Set scroll as traditional instead of natural
 # https://macos-defaults.com/mouse/linear.html
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false && killall Finder
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false && killall Finder || true
 
 # -- Keyboard Defaults --
 
@@ -78,30 +78,30 @@ defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
 # If you have several windows from multiple apps open simultaneously, have the windows organised by app in Mission Control.
 # Do not group windows by application.
 # https://macos-defaults.com/mission-control/expose-group-apps.html
-defaults write com.apple.dock "expose-group-apps" -bool "true" && killall Dock
+defaults write com.apple.dock "expose-group-apps" -bool "true" && killall Dock || true
 
 # -- Xcode Defaults --
 # Show build durations in the Activity Viewer in Xcode's toolbar at the top of the workspace window.
 # https://macos-defaults.com/xcode/showbuildoperationduration.html
-defaults write com.apple.dt.Xcode "ShowBuildOperationDuration" -bool "true" && killall Xcode
+defaults write com.apple.dt.Xcode "ShowBuildOperationDuration" -bool "true" && killall Xcode || true
 
 # -- ScreenShot Defaults --
 
 # Set location for screenshots
 # https://macos-defaults.com/screenshots/
 mkdir -p "${HOME}/Desktop/Screenshots"
-defaults write com.apple.screencapture location "${HOME}/Desktop/Screenshots" && killall SystemUIServer
+defaults write com.apple.screencapture location "${HOME}/Desktop/Screenshots" && killall SystemUIServer || true
 
 # -- TextEdit Defaults --
 
 # Set default document format as rich text (.rtf) or plain text (.txt).
 # Rich text is disabled. TXT is enabled.
-defaults write com.apple.TextEdit "RichText" -bool "false" && killall TextEdit
+defaults write com.apple.TextEdit "RichText" -bool "false" && killall TextEdit || true
 
 # -- Menu Bar Defaults --
 
 # Add Bluetooth to Menu Bar for battery percentages
-defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true && killall ControlCenter
+defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true && killall ControlCenter || true
 
 # -- Set Desktop Wallpapper --
 
@@ -118,6 +118,6 @@ tell application "System Events"
         end tell
     end repeat
 end tell
-EOF
+EOF || true
 
 echo "macOS defaults applied."

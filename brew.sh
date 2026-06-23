@@ -70,6 +70,7 @@ packages=(
     "pipx"
     "poppler"
     "resvg"
+    "sketchybar"
     "starship"
     "swiftformat"
     "swiftlint"
