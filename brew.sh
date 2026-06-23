@@ -156,7 +156,6 @@ apps=(
     "karabiner-elements"
     "librewolf"
     "localsend"
-    "obsidian"
     "raindropio"
     "raycast"
     "sf-symbols"

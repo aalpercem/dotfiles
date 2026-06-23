@@ -11,9 +11,12 @@ sys_apps=(
 
 # External applications (those in the Applications path)
 apps=(
-    "Obsidian"
+    "WezTerm"
+    "LibreWolf"
+    "Google Chrome"
+    "Xcode"
+    "Raindrop.io"
     "Sublime Merge"
-    "Bitwarden"
 )
 
 # Add system applications
