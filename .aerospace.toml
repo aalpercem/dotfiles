@@ -11,6 +11,7 @@ after-startup-command = [
   # 'exec-and-forget open -a /Applications/Simulator.app',
   # 'exec-and-forget open -a /Applications/Sublime\ Merge.app',
   # 'exec-and-forget open -a /Applications/Docker.app'
+  'exec-and-forget aerospace workspace 1',
 ]
 
 exec-on-workspace-change = ['/bin/bash', '-c',

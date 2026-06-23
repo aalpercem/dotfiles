@@ -45,6 +45,8 @@ config.hide_tab_bar_if_only_one_tab = false
 config.tab_max_width = 128
 
 config.colors = {
+	selection_fg = c.base,
+	selection_bg = c.rose,
 	tab_bar = {
 		background = c.base,
 		inactive_tab = {
