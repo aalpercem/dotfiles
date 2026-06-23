@@ -15,6 +15,7 @@ After `./install.sh` finishes, complete the following manual steps.
 - Open VLC and complete first-run setup.
 - Open Raindrop.io and import data from iCloud.
 - Open Hammerspoon and grant the requested Accessibility and Automation permissions.
+- Download Ports.app from https://www.ports-app.com/
 
 ## macOS Settings
 
