@@ -32,6 +32,15 @@ if [ -d "$BREW_PREFIX" ] && ! [ -w "$BREW_PREFIX/Cellar" ] 2>/dev/null; then
     echo "Permissions fixed."
 fi
 
+# ── Add Homebrew to PATH permanently in .zshrc ──
+if ! grep -q "brew shellenv" "${HOME}/.zshrc" 2>/dev/null; then
+    echo "Adding Homebrew to PATH in .zshrc…"
+    echo '' >> "${HOME}/.zshrc"
+    echo '# Homebrew PATH' >> "${HOME}/.zshrc"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> "${HOME}/.zshrc"
+    echo "Done."
+fi
+
 # Update Homebrew and upgrade existing formulae/casks
 brew update || true
 brew upgrade || true

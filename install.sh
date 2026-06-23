@@ -22,7 +22,7 @@ dotfiledir="${HOME}/dotfiles"
 files=(zshrc zprofile zprompt bashrc bash_profile bash_prompt aliases private)
 
 # XDG config directories to symlink from ~/dotfiles/.config
-config_dirs=(wezterm opencode nvim karabiner)
+config_dirs=(wezterm opencode nvim karabiner sketchybar)
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"

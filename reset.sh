@@ -54,7 +54,7 @@ done
 
 rm -f "${HOME}/.aerospace.toml" 2>/dev/null || true
 
-config_dirs=(wezterm opencode nvim karabiner)
+config_dirs=(wezterm opencode nvim karabiner sketchybar)
 for dir in "${config_dirs[@]}"; do
     target="${HOME}/.config/${dir}"
     [ -L "$target" ] && rm -f "$target" 2>/dev/null || true
