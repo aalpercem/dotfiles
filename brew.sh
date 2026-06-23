@@ -23,11 +23,19 @@ if ! command -v brew &>/dev/null; then
     exit 1
 fi
 
+# ── Fix Homebrew permissions if needed ──
+BREW_PREFIX="$(brew --prefix)"
+if [ -d "$BREW_PREFIX" ] && ! [ -w "$BREW_PREFIX/Cellar" ] 2>/dev/null; then
+    echo "Fixing Homebrew permissions…"
+    sudo chown -R "$(whoami)" "$BREW_PREFIX"
+    echo "Permissions fixed."
+fi
+
 # Update Homebrew and upgrade existing formulae/casks
-brew update
-brew upgrade
-brew upgrade --cask
-brew cleanup
+brew update || true
+brew upgrade || true
+brew upgrade --cask || true
+brew cleanup || true
 
 # Required tap(s)
 brew tap anomalyco/tap

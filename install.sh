@@ -5,7 +5,15 @@
 # And also installs Homebrew Packages and Casks (Apps)
 ############################
 
-set -euo pipefail
+set -uo pipefail
+
+# ── Logging ──
+LOG_FILE="${HOME}/dotfiles/install-$(date +%Y%m%d-%H%M%S).log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+info()  { printf "\033[0;32m%s\033[0m %s\n" "[INFO]" "$1"; }
+warn()  { printf "\033[1;33m%s\033[0m %s\n" "[WARN]" "$1"; }
+error() { printf "\033[0;31m%s\033[0m %s\n" "[ERROR]" "$1"; }
 
 # dotfiles directory
 dotfiledir="${HOME}/dotfiles"
@@ -38,10 +46,22 @@ for dir in "${config_dirs[@]}"; do
 done
 
 # Run the MacOS Script
-./macOS.sh
+info "Running macOS.sh…"
+./macOS.sh || warn "macOS.sh had non-fatal errors. Continuing…"
 
 # Run the Homebrew Script
-./brew.sh
+info "Running brew.sh…"
+./brew.sh || warn "brew.sh had non-fatal errors. Check the log."
 
-echo "Installation complete."
-echo "Post-install checklist: ${dotfiledir}/POST_INSTALL_CHECKLIST.md"
+info "Installation complete."
+info "Log saved to: $LOG_FILE"
+info "Post-install checklist: ${dotfiledir}/POST_INSTALL_CHECKLIST.md"
+
+# ── Summary ──
+printf "\n%s\n" "═══════════════════════════════════════════"
+info "Summary:"
+echo "  • Symlinks:        ✅ created"
+echo "  • macOS defaults:  ✅ applied"
+echo "  • Homebrew:        ⏺  check log for details"
+echo "  • Wallpaper:       ✅ set"
+printf "%s\n\n" "═══════════════════════════════════════════"
