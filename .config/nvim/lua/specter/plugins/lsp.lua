@@ -175,6 +175,10 @@ return {
         },
       }
       vim.lsp.config('sourcekit', {
+        cmd = servers['sourcekit'].cmd,
+        filetypes = servers['sourcekit'].filetypes,
+        root_markers = servers['sourcekit'].root_markers,
+        get_language_id = servers['sourcekit'].get_language_id,
         capabilities = vim.tbl_deep_extend('force', {}, capabilities, (servers['sourcekit'] or {}).capabilities or {}),
       })
       vim.lsp.enable 'sourcekit'

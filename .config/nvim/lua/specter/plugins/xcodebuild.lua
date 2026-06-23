@@ -259,8 +259,8 @@ return {
           -- xcode_build_server: automatically re-run `xcode-build-server config` when
           -- the scheme changes. This keeps sourcekit-lsp in sync with the project.
           xcode_build_server = {
-            enabled = false,
-            guess_scheme = false,
+            enabled = true,
+            guess_scheme = true,
           },
 
           -- File-tree integrations: when enabled, adding / deleting / renaming files
