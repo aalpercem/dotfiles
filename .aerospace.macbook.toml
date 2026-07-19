@@ -10,7 +10,8 @@ after-startup-command = [
   # 'exec-and-forget open -a /Applications/Simulator.app',
   # 'exec-and-forget open -a /Applications/Sublime\ Merge.app',
   # 'exec-and-forget open -a /Applications/Docker.app'
-  'exec-and-forget aerospace workspace 1',
+  # cycle WS2→WS1: primes internal keyboard handler so first binding always works
+  'exec-and-forget bash -c "sleep 1 && aerospace workspace 2 && aerospace workspace 1"',
 ]
 
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -45,6 +46,10 @@ if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
+if.app-id = 'org.love2d.love'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
@@ -62,15 +67,15 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.sublimemerge'
-run = ['move-node-to-workspace 4', 'layout floating']
+run = ['move-node-to-workspace 3', 'layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.electron.dockerdesktop'
-run = ['move-node-to-workspace 4', 'layout floating']
+run = ['move-node-to-workspace 3', 'layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.docker.docker'
-run = ['move-node-to-workspace 4', 'layout floating']
+run = ['move-node-to-workspace 3', 'layout floating']
 
 [key-mapping]
 preset = 'qwerty'
