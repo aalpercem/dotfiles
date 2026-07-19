@@ -22,4 +22,5 @@ return {
   { import = 'specter.plugins.snacks' },
   { import = 'specter.plugins.love2d' },
   { import = 'specter.plugins.supermaven' },
+  { import = 'specter.plugins.99' },
 }

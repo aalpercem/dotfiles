@@ -97,12 +97,15 @@ return {
         },
       },
       spec = {
+        { '<leader>j', group = '[J]ump' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>x', group = 'Xcodebuild' },
         { '<leader>d', group = 'Debug / DAP' },
+        { '<leader>9', group = '99' },
       },
     },
   },
 }
+
