@@ -21,4 +21,5 @@ return {
   { import = 'specter.plugins.nvimtree' },
   { import = 'specter.plugins.snacks' },
   { import = 'specter.plugins.love2d' },
+  { import = 'specter.plugins.supermaven' },
 }
