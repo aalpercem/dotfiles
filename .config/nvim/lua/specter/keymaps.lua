@@ -115,3 +115,4 @@ end, { desc = 'DAP: Terminate Session' })
 
 -- File tree
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Toggle file tree' })
+vim.keymap.set('n', '<leader>jf', '<cmd>NvimTreeFindFile<cr>', { desc = '[J]ump to [F]ile in tree' })
