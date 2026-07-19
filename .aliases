@@ -5,6 +5,7 @@ alias blog="cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/cemblog"
 alias mf="cd $HOME/Developer/shared/manifestin"
 alias cnvim="cd $HOME/dotfiles/.config/nvim"
 alias dot="cd $HOME/dotfiles"
+alias love="/Applications/love.app/Contents/MacOS/love"
 
 # Detect which `ls` flavor is in use
 if ls --color >/dev/null 2>&1; then # GNU `ls`

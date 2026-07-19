@@ -20,4 +20,5 @@ return {
   { import = 'specter.plugins.dap' },
   { import = 'specter.plugins.nvimtree' },
   { import = 'specter.plugins.snacks' },
+  { import = 'specter.plugins.love2d' },
 }
