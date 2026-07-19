@@ -5,7 +5,6 @@ after-startup-command = [
   'exec-and-forget sketchybar',
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
   'exec-and-forget open -a /Applications/WezTerm.app',
-  'exec-and-forget open -a /Applications/LibreWolf.app',
   # 'exec-and-forget open -a /Applications/Google\ Chrome.app',
   # 'exec-and-forget open -a /Applications/Xcode.app',
   # 'exec-and-forget open -a /Applications/Simulator.app',
@@ -32,10 +31,6 @@ persistent-workspaces = ['1', '2', '3', '4', '5']
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = ['move-node-to-workspace 1', 'layout tiling']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'l[oö]ve'
-run = ['move-node-to-workspace 3', 'layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.dt.Xcode'
@@ -69,10 +64,6 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.SystemSettings'
 run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'org.mozilla.librewolf'
-run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-id = 'com.sublimemerge'
@@ -130,7 +121,6 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # Layout
 alt-ctrl-f = 'layout floating tiling'
 alt-shift-enter = 'fullscreen'
-alt-f = 'exec-and-forget open -a Finder'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
@@ -157,10 +147,3 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
-
-[workspace-to-monitor-force-assignment]
-1 = 'main'
-2 = 'secondary'
-3 = 'main'
-4 = 'main'
-5 = 'main'

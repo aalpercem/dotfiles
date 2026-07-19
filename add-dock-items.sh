@@ -11,9 +11,12 @@ sys_apps=(
 
 # External applications (those in the Applications path)
 apps=(
-    "Obsidian"
+    "WezTerm"
+    "LibreWolf"
+    "Google Chrome"
+    "Xcode"
+    "Raindrop.io"
     "Sublime Merge"
-    "Bitwarden"
 )
 
 # Add system applications
@@ -32,4 +35,4 @@ for app in "${apps[@]}"; do
 done
 
 # Restart Dock
-killall Dock
+killall Dock || true

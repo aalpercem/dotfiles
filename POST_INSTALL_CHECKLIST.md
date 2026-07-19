@@ -15,7 +15,8 @@ After `./install.sh` finishes, complete the following manual steps.
 - Open VLC and complete first-run setup.
 - Open Raindrop.io and import data from iCloud.
 - Open Hammerspoon and grant the requested Accessibility and Automation permissions.
-- Download Ports.app from https://www.ports-app.com/
+- Download **LibreWolf** manually from https://librewolf.net (brew cask is deprecated — download the release DMG instead).
+- Download **Ports.app** from https://www.ports-app.com/
 
 ## macOS Settings
 
@@ -27,6 +28,12 @@ After `./install.sh` finishes, complete the following manual steps.
 - Add `cemozturk` or `Developer` to Finder Sidebar Favorites.
 - Create additional Spaces for each display.
 
+## Services
+
+- If SketchyBar is not visible, run: `brew services restart sketchybar`
+- If borders are not visible, run: `brew services restart borders`
+
 ## Optional
 
 - Import terminal profile from `settings/CMS.terminal` if needed.
+- **Kanata** is installed for external keyboard remapping. On MacBook built-in keyboard it may not work as expected — disable or uninstall if not needed.

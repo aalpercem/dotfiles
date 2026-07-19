@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-set -euo pipefail
+set -uo pipefail
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
 
 # Install Homebrew if it isn't already installed
 if ! command -v brew &>/dev/null; then
@@ -23,20 +24,37 @@ if ! command -v brew &>/dev/null; then
     exit 1
 fi
 
+# ── Fix Homebrew permissions if needed ──
+BREW_PREFIX="$(brew --prefix)"
+if [ -d "$BREW_PREFIX" ] && ! [ -w "$BREW_PREFIX/Cellar" ] 2>/dev/null; then
+    echo "Fixing Homebrew permissions…"
+    sudo chown -R "$(whoami)" "$BREW_PREFIX"
+    echo "Permissions fixed."
+fi
+
+# ── Add Homebrew to PATH permanently in .zshrc ──
+if ! grep -q "brew shellenv" "${HOME}/.zshrc" 2>/dev/null; then
+    echo "Adding Homebrew to PATH in .zshrc…"
+    echo '' >> "${HOME}/.zshrc"
+    echo '# Homebrew PATH' >> "${HOME}/.zshrc"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> "${HOME}/.zshrc"
+    echo "Done."
+fi
+
 # Update Homebrew and upgrade existing formulae/casks
-brew update
-brew upgrade
-brew upgrade --cask
-brew cleanup
+brew update || true
+brew upgrade || true
+brew upgrade --cask || true
+brew cleanup || true
 
 # Required tap(s)
-brew tap anomalyco/tap
-brew tap nikitabobko/tap
-brew tap gromgit/brewtils
-brew tap arimxyer/tap
-brew tap felixkratz/formulae
-brew tap jesseduffield/lazygit
-brew tap modem-dev/tap
+brew tap anomalyco/tap          || true
+brew tap nikitabobko/tap        || true
+brew tap gromgit/brewtils       || true
+brew tap arimxyer/tap           || true
+brew tap felixkratz/formulae    || true
+brew tap jesseduffield/lazygit  || true
+brew tap modem-dev/tap          || true
 
 # Define an array of packages to install using Homebrew.
 packages=(
@@ -70,6 +88,7 @@ packages=(
     "pipx"
     "poppler"
     "resvg"
+    "sketchybar"
     "starship"
     "swiftformat"
     "swiftlint"
@@ -88,7 +107,7 @@ for package in "${packages[@]}"; do
         echo "$package is already installed. Skipping..."
     else
         echo "Installing $package..."
-        brew install "$package"
+        brew install "$package" || echo "[WARN] Failed to install $package. Continuing..."
     fi
 done
 
@@ -100,10 +119,10 @@ if [ "$SHELL" != "$BREW_ZSH" ]; then
     # Check if Homebrew's zsh is already in allowed shells
     if ! grep -Fxq "$BREW_ZSH" /etc/shells; then
         echo "Adding Homebrew zsh to allowed shells"
-        echo "$BREW_ZSH" | sudo tee -a /etc/shells >/dev/null
+        echo "$BREW_ZSH" | sudo tee -a /etc/shells >/dev/null || true
     fi
     # Set the Homebrew zsh as default shell
-    chsh -s "$BREW_ZSH"
+    chsh -s "$BREW_ZSH" || true
     echo "Default shell changed to Homebrew zsh."
 else
     echo "Homebrew zsh is already the default shell. Skipping configuration."
@@ -135,11 +154,8 @@ apps=(
     "github"
     "google-chrome"
     "karabiner-elements"
-    "librewolf"
     "localsend"
-    "obsidian"
     "raindropio"
-    "raycast"
     "sf-symbols"
     "stats"
     "sublime-merge"
@@ -153,7 +169,7 @@ for app in "${apps[@]}"; do
         echo "$app is already installed. Skipping..."
     else
         echo "Installing $app..."
-        brew install --cask "$app"
+        brew install --cask "$app" || echo "[WARN] Failed to install $app. Continuing..."
     fi
 done
 
@@ -184,7 +200,11 @@ done
 # done
 
 # Update and clean up again for safe measure
-brew update
-brew upgrade
-brew upgrade --cask
-brew cleanup
+brew update || true
+brew upgrade || true
+brew upgrade --cask || true
+brew cleanup || true
+
+# ── Start brew services ──
+echo "Starting brew services…"
+brew services start sketchybar 2>/dev/null || true

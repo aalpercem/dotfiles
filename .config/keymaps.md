@@ -213,7 +213,23 @@ Service mode'da sağ el tuşlarından birine bas → pencereyi workspace'e taş�
 
 ---
 
-## 12. Çakışma (Conflict) Analizi
+## 12. Homerow
+
+**Kaynak:** `homerow.app`
+**Click:** `Ctrl+Shift+F` | **Search:** `Ctrl+Shift+S` | **Scroll:** `Ctrl+Shift+D`
+**Scroll mode:** shortcut → numara sec (1,2,3) → `j/k` veya `d/u` kaydir
+
+| Mod | Shortcut | Açıklama |
+|-----|----------|----------|
+| Click | `Ctrl+Shift+F` | Ekrandaki tıklama ögelerine etiket basar |
+| Search | `Ctrl+Shift+S` | Spotlight gibi UI elementi ara |
+| Scroll | `Ctrl+Shift+D` | Scroll alanını seç → `j/k/d/u` ile kaydır |
+
+`Ctrl+Shift+*` hiçbiri Aerospace/Neovim/WezTerm'de kullanılmıyor ✅.
+
+---
+
+## 14. Çakışma (Conflict) Analizi
 
 | Kısayol | Sahibi | Çakışma? |
 |---------|--------|----------|
@@ -227,12 +243,13 @@ Service mode'da sağ el tuşlarından birine bas → pencereyi workspace'e taş�
 | `Opt + h` | WezTerm (SplitVertical) | **Etkilenmez** (Aerospace'de tanımlı değil) ✅ |
 | `Ctrl+Alt + h,j,k,l,;` | Aerospace workspace | macOS'te **hiçbiri kullanılmıyor** ✅ |
 | `Ctrl+Alt + s` | Aerospace service mode giriş | macOS'te kullanılmıyor ✅ |
+| `Ctrl+Shift + F/S/D` | Homerow click/search/scroll | Aerospace/Neovim/WezTerm'de kullanılmıyor ✅ |
 
 > **Önemli:** `Cmd` prefix'li hiçbir tuş Aerospace'de tanımlı değil. Tüm standart macOS kısayolları (Select All, Save, Find, Copy, Paste, Hide, Close) sorunsuz çalışır.
 
 > **Caps Lock davranışı:** Basılı tutunca `Ctrl+Opt` gönderir, workspace'leri kontrol eder. Tek tıkta normal Caps Lock işlevi devam eder.
 
-## 13. Boş / Kullanılmayan `<leader>` Prefix'leri
+## 15. Boş / Kullanılmayan `<leader>` Prefix'leri
 
 | Prefix | Which-key Label | Tanımlı Keymap | Boş Alan |
 |--------|----------------|----------------|----------|
@@ -242,7 +259,7 @@ Service mode'da sağ el tuşlarından birine bas → pencereyi workspace'e taş�
 | `<leader>d` | Debug / DAP | 7 tane (`dd`, `dr`, `dt`, `dT`, `db`, `dB`, `dx`) | Doygun sayılır |
 | `<leader>x` | Xcodebuild | 20 tane | Doygun |
 
-## 14. Geçmişten Gelen Değişiklikler
+## 16. Geçmişten Gelen Değişiklikler
 
 | Eski Key | Yeni Key | Aksiyon | Değişim Tarihi |
 |----------|----------|---------|----------------|
@@ -263,8 +280,9 @@ Service mode'da sağ el tuşlarından birine bas → pencereyi workspace'e taş�
 | `Alt + y/u/i/o` | `Caps Lock + n/m/,/.` | Aerospace focus (Caps Lock alt sıra) | 2026-06-19 |
 | `Alt + Shift + y/u/i/o` | `Caps Lock + u/i/o/p` | Aerospace move (Caps Lock üst sıra) | 2026-06-19 |
 | `Caps Lock + u/i/o/p` | *kaldırıldı* | Aerospace WS 6-9 (move'e devredildi) | 2026-06-19 |
+| — | `Ctrl+Shift+F/S/D` | Homerow click/search/scroll | 2026-07-08 (yeni) |
 
-## 15. Toplu İstatistik
+## 17. Toplu İstatistik
 
 | Kategori | Sayı |
 |----------|------|
@@ -277,5 +295,6 @@ Service mode'da sağ el tuşlarından birine bas → pencereyi workspace'e taş�
 | **Neovim — Diğer** | 1 |
 | **WezTerm** | 9 |
 | **Aerospace** | 31 |
+| **Homerow** | 3 |
 | **Karabiner** | 1 |
-| **Toplam** | **106** |
+| **Toplam** | **109** |

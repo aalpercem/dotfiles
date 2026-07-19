@@ -5,6 +5,7 @@ return {
     opts = {
       library = {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        { path = '${3rd}/love2d/library' },
       },
     },
   },
@@ -111,8 +112,23 @@ return {
         lua_ls = {
           settings = {
             Lua = {
+              runtime = {
+                version = 'Lua 5.1',
+              },
               completion = {
                 callSnippet = 'Replace',
+              },
+              workspace = {
+                checkThirdParty = false,
+                library = {
+                  '${3rd}/love2d/library',
+                },
+              },
+              typecheck = {
+                strict = true,
+              },
+              diagnostics = {
+                globals = { 'love' },
               },
             },
           },
@@ -175,10 +191,6 @@ return {
         },
       }
       vim.lsp.config('sourcekit', {
-        cmd = servers['sourcekit'].cmd,
-        filetypes = servers['sourcekit'].filetypes,
-        root_markers = servers['sourcekit'].root_markers,
-        get_language_id = servers['sourcekit'].get_language_id,
         capabilities = vim.tbl_deep_extend('force', {}, capabilities, (servers['sourcekit'] or {}).capabilities or {}),
       })
       vim.lsp.enable 'sourcekit'

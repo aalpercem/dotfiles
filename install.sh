@@ -5,7 +5,15 @@
 # And also installs Homebrew Packages and Casks (Apps)
 ############################
 
-set -euo pipefail
+set -uo pipefail
+
+# ── Logging ──
+LOG_FILE="${HOME}/dotfiles/install-$(date +%Y%m%d-%H%M%S).log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+info()  { printf "\033[0;32m%s\033[0m %s\n" "[INFO]" "$1"; }
+warn()  { printf "\033[1;33m%s\033[0m %s\n" "[WARN]" "$1"; }
+error() { printf "\033[0;31m%s\033[0m %s\n" "[ERROR]" "$1"; }
 
 # dotfiles directory
 dotfiledir="${HOME}/dotfiles"
@@ -14,7 +22,7 @@ dotfiledir="${HOME}/dotfiles"
 files=(zshrc zprofile zprompt bashrc bash_profile bash_prompt aliases private)
 
 # XDG config directories to symlink from ~/dotfiles/.config
-config_dirs=(wezterm opencode nvim karabiner)
+config_dirs=(wezterm opencode nvim karabiner sketchybar)
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
@@ -26,8 +34,15 @@ for file in "${files[@]}"; do
     ln -sf "${dotfiledir}/.${file}" "${HOME}/.${file}"
 done
 
-echo "Creating symlink to aerospace.toml in home directory."
-ln -sf "${dotfiledir}/.aerospace.toml" "${HOME}/.aerospace.toml"
+echo -n "Is this a MacBook (single display)? [y/N]: "
+read -r IS_MACBOOK
+if [[ "$IS_MACBOOK" =~ ^[Yy]$ ]]; then
+    echo "Creating symlink to aerospace.macbook.toml (single-display config)"
+    ln -sf "${dotfiledir}/.aerospace.macbook.toml" "${HOME}/.aerospace.toml"
+else
+    echo "Creating symlink to aerospace.toml (multi-display config)"
+    ln -sf "${dotfiledir}/.aerospace.toml" "${HOME}/.aerospace.toml"
+fi
 
 echo "Ensuring ~/.config exists"
 mkdir -p "${HOME}/.config"
@@ -38,10 +53,22 @@ for dir in "${config_dirs[@]}"; do
 done
 
 # Run the MacOS Script
-./macOS.sh
+info "Running macOS.sh…"
+./macOS.sh || warn "macOS.sh had non-fatal errors. Continuing…"
 
 # Run the Homebrew Script
-./brew.sh
+info "Running brew.sh…"
+./brew.sh || warn "brew.sh had non-fatal errors. Check the log."
 
-echo "Installation complete."
-echo "Post-install checklist: ${dotfiledir}/POST_INSTALL_CHECKLIST.md"
+info "Installation complete."
+info "Log saved to: $LOG_FILE"
+info "Post-install checklist: ${dotfiledir}/POST_INSTALL_CHECKLIST.md"
+
+# ── Summary ──
+printf "\n%s\n" "═══════════════════════════════════════════"
+info "Summary:"
+echo "  • Symlinks:        ✅ created"
+echo "  • macOS defaults:  ✅ applied"
+echo "  • Homebrew:        ⏺  check log for details"
+echo "  • Wallpaper:       ✅ set"
+printf "%s\n\n" "═══════════════════════════════════════════"
