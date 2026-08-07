@@ -99,6 +99,15 @@
       "skillFolderHash": "3b55ae171a989bce6f7c2ea635d303e6eaecebc0",
       "installedAt": "2026-06-07T11:25:03.502Z",
       "updatedAt": "2026-06-07T11:25:03.502Z"
+    },
+    "pixel-art": {
+      "source": "omer-metin/skills-for-antigravity",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/omer-metin/skills-for-antigravity.git",
+      "skillPath": "skills/pixel-art/SKILL.md",
+      "skillFolderHash": "e589096e0d45390acb17dbcc834029533aa87616",
+      "installedAt": "2026-08-03T12:01:44.600Z",
+      "updatedAt": "2026-08-03T12:01:44.600Z"
     }
   },
   "dismissed": {

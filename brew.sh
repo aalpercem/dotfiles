@@ -58,6 +58,7 @@ brew tap modem-dev/tap          || true
 
 # Define an array of packages to install using Homebrew.
 packages=(
+    "7zip"
     "bash"
     "btop"
     "cloudflared"

@@ -3,6 +3,7 @@
 alias muse="cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/Muse"
 alias blog="cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/cemblog"
 alias mf="cd $HOME/Developer/shared/manifestin"
+alias dw="cd $HOME/Downloads"
 alias cnvim="cd $HOME/dotfiles/.config/nvim"
 alias dot="cd $HOME/dotfiles"
 alias dp="cd $HOME/Developer/personal"

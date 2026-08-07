@@ -32,11 +32,6 @@ return {
         --   brew install swiftformat
         swift = { 'swiftformat' },
       },
-      formatters = {
-        swiftformat = {
-          args = { '--indent', '2' },
-        },
-      },
     },
   },
 }

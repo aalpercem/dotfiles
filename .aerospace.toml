@@ -5,8 +5,8 @@ after-startup-command = [
   'exec-and-forget sketchybar',
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
   'exec-and-forget open -a /Applications/WezTerm.app',
-  'exec-and-forget open -a /Applications/LibreWolf.app',
-  # 'exec-and-forget open -a /Applications/Google\ Chrome.app',
+  # 'exec-and-forget open -a /Applications/LibreWolf.app',
+  'exec-and-forget open -a /Applications/Google\ Chrome.app',
   # 'exec-and-forget open -a /Applications/Xcode.app',
   # 'exec-and-forget open -a /Applications/Simulator.app',
   # 'exec-and-forget open -a /Applications/Sublime\ Merge.app',
@@ -69,6 +69,10 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.SystemSettings'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.QuickTimePlayerX'
+run = 'layout tiling'
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.librewolf'

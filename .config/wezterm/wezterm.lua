@@ -23,6 +23,9 @@ config.font_size = 25
 -- Color scheme
 config.color_scheme = "rose-pine"
 
+-- Dim inactive panes so focus is obvious
+config.inactive_pane_hsb = { saturation = 0.8, brightness = 0.75 }
+
 -- Rose Pine colors from built-in scheme (fallback to catppuccin if unavailable)
 local scheme = wezterm.color.get_builtin_schemes()["rose-pine"]
   or wezterm.color.get_builtin_schemes()["catppuccin-mocha"]
