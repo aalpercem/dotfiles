@@ -60,6 +60,7 @@ brew tap modem-dev/tap          || true
 packages=(
     "7zip"
     "bash"
+    "borders"
     "btop"
     "cloudflared"
     "coreutils"
@@ -111,6 +112,13 @@ for package in "${packages[@]}"; do
         brew install "$package" || echo "[WARN] Failed to install $package. Continuing..."
     fi
 done
+
+# ── SbarLua (sketchybar Lua API) — brew'de yok, kaynaktan ──
+if [ ! -f "$HOME/.local/share/sketchybar_lua/sketchybar.so" ]; then
+    echo "Installing SbarLua (sketchybar Lua API)…"
+    git clone --depth 1 https://github.com/FelixKratz/SbarLua /tmp/SbarLua
+    (cd /tmp/SbarLua && make install && rm -rf /tmp/SbarLua)
+fi
 
 # Get the path to Homebrew's zsh
 BREW_ZSH="$(brew --prefix)/bin/zsh"
@@ -208,4 +216,6 @@ brew cleanup || true
 
 # ── Start brew services ──
 echo "Starting brew services…"
-brew services start sketchybar 2>/dev/null || true
+# sketchybar is started by aerospace (after-startup-command); starting it
+# here too would draw two bars on a fresh install.
+true

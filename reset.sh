@@ -60,6 +60,8 @@ for dir in "${config_dirs[@]}"; do
     [ -L "$target" ] && rm -f "$target" 2>/dev/null || true
 done
 
+rm -rf "${HOME}/.local/share/sketchybar_lua" 2>/dev/null || true
+
 info "Symlinks removed."
 
 # ═══════════════════════════════════════════════════════
@@ -139,7 +141,7 @@ printf "\n%s\n" "─────────────────────
 info "Removing Homebrew packages from repo list…"
 
 packages=(
-    "bash" "btop" "cloudflared" "coreutils" "curl" "docker" "docker-compose"
+    "bash" "borders" "btop" "cloudflared" "coreutils" "curl" "docker" "docker-compose"
     "eza" "fastfetch" "ffmpeg" "git" "glow" "hf" "hunk" "immich-cli"
     "imagemagick" "jq" "kanata" "lazygit" "llmfit" "luarocks" "mactop"
     "make" "mdcat" "neovim" "nowplaying-cli" "opencode" "pipx" "poppler"
