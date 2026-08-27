@@ -19,10 +19,13 @@ error() { printf "\033[0;31m%s\033[0m %s\n" "[ERROR]" "$1"; }
 dotfiledir="${HOME}/dotfiles"
 
 # list of files/folders to symlink in ${homedir}
-files=(zshrc zprofile zprompt bashrc bash_profile bash_prompt aliases private)
+files=(zshrc zprofile bashrc bash_profile bash_prompt aliases private)
 
 # XDG config directories to symlink from ~/dotfiles/.config
-config_dirs=(wezterm opencode nvim karabiner sketchybar)
+config_dirs=(wezterm opencode nvim karabiner sketchybar borders hunk kanata)
+
+# Agent directories symlinked whole (~/.agents, ~/.pi)
+agent_dirs=(agents pi)
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
@@ -44,6 +47,11 @@ else
     ln -sf "${dotfiledir}/.aerospace.toml" "${HOME}/.aerospace.toml"
 fi
 
+for dir in "${agent_dirs[@]}"; do
+    echo "Creating symlink to .${dir} in home directory."
+    ln -sfn "${dotfiledir}/.${dir}" "${HOME}/.${dir}"
+done
+
 echo "Ensuring ~/.config exists"
 mkdir -p "${HOME}/.config"
 
@@ -51,6 +59,9 @@ for dir in "${config_dirs[@]}"; do
     echo "Creating symlink to ${dir} in ~/.config"
     ln -sfn "${dotfiledir}/.config/${dir}" "${HOME}/.config/${dir}"
 done
+
+echo "Creating symlink to starship.toml in ~/.config"
+ln -sf "${dotfiledir}/.config/starship.toml" "${HOME}/.config/starship.toml"
 
 # Run the MacOS Script
 info "Running macOS.sh…"

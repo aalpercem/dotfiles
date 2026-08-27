@@ -1,0 +1,22 @@
+{
+  "lastChangelogVersion": "0.84.2",
+  "theme": "colorsafe",
+  "defaultProvider": "opencode",
+  "defaultModel": "deepseek-v4-flash",
+  "defaultThinkingLevel": "low",
+  "tuiMode": "fullscreen",
+  "packages": [
+    "npm:@dietrichgebert/ponytail",
+    "npm:@tintinweb/pi-subagents",
+    "npm:pi-mcp-adapter",
+    "npm:pi-web-access",
+    "npm:pi-background-tasks",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:@ff-labs/pi-fff",
+    "npm:pi-zentui",
+    "npm:@nicknisi/pi-pin-last-prompt",
+    "npm:@narumitw/pi-plan-mode"
+  ],
+  "fullscreenExitOutput": "transcript",
+  "fullscreenScrollbar": "auto"
+}

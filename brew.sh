@@ -87,6 +87,7 @@ packages=(
     "neovim"
     "nowplaying-cli"
     "opencode"
+    "pi-coding-agent"
     "pipx"
     "poppler"
     "resvg"
@@ -94,6 +95,7 @@ packages=(
     "starship"
     "swiftformat"
     "swiftlint"
+    "tmux"
     "xcbeautify"
     "xcode-build-server"
     "xcp"
@@ -104,14 +106,31 @@ packages=(
 )
 
 # Loop over the array to install each application.
+failed=()
+
 for package in "${packages[@]}"; do
     if brew list --formula "$package" &>/dev/null; then
         echo "$package is already installed. Skipping..."
     else
         echo "Installing $package..."
-        brew install "$package" || echo "[WARN] Failed to install $package. Continuing..."
+        if ! brew install "$package"; then
+            echo "[WARN] Failed to install $package."
+            failed+=("$package")
+        fi
     fi
 done
+[ ${#failed[@]} -gt 0 ] && printf "\n[FAILED] %s\n" "${failed[@]}"
+
+# ── Global npm araçları ──
+if ! command -v open-computer-use &>/dev/null; then
+    echo "Installing open-computer-use (npm global)…"
+    if ! npm install -g open-computer-use; then
+        echo "[WARN] Failed to install open-computer-use."
+        failed+=("open-computer-use (npm)")
+    fi
+else
+    echo "open-computer-use is already installed. Skipping..."
+fi
 
 # ── SbarLua (sketchybar Lua API) — brew'de yok, kaynaktan ──
 if [ ! -f "$HOME/.local/share/sketchybar_lua/sketchybar.so" ]; then
@@ -173,14 +192,19 @@ apps=(
 )
 
 # Loop over the array to install each application.
+failed_casks=()
 for app in "${apps[@]}"; do
     if brew list --cask "$app" &>/dev/null; then
         echo "$app is already installed. Skipping..."
     else
         echo "Installing $app..."
-        brew install --cask "$app" || echo "[WARN] Failed to install $app. Continuing..."
+        if ! brew install --cask "$app"; then
+            echo "[WARN] Failed to install $app."
+            failed_casks+=("$app")
+        fi
     fi
 done
+[ ${#failed_casks[@]} -gt 0 ] && printf "\n[FAILED] %s\n" "${failed_casks[@]}"
 
 # Install fonts
 # Tap the Homebrew font cask repository if not already tapped

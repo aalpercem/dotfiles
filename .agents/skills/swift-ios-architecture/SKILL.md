@@ -1,6 +1,6 @@
 ---
 name: swift-ios-architecture
-description: Scaffold or extend an iOS SwiftUI + SwiftData app using a proven architecture blueprint: DIContainer dependency injection, SettingsStore UserDefaults wrapper, @Observable managers, protocol-first networking, Router-based navigation, and a themeable design system. Use when starting a new iOS project, reviewing structure, or wiring DI/storage/services.
+description: "Scaffold or extend an iOS SwiftUI + SwiftData app using a proven architecture blueprint: DIContainer dependency injection, SettingsStore UserDefaults wrapper, @Observable managers, protocol-first networking, Router-based navigation, and a themeable design system. Use when starting a new iOS project, reviewing structure, or wiring DI/storage/services."
 compatibility: opencode
 metadata:
   audience: contributors
@@ -281,6 +281,16 @@ protocol BaseView: View {
 - `ViewState` = `idle` / `loading` / `loaded`. Set `viewState = .loaded` when initial data finishes. Default `loadingView()` is a centered `ProgressView`.
 - `ViewEvent` is an empty marker protocol; each screen defines its own event enum (`enum ManifestEvent: ViewEvent { ... }`) in the `+Extensions` file and handles actions in `eventTrigger`.
 - Screen file structure: `@Environment(DIContainer.self)` → `@State` → `init` → `contentView` → subviews/toolbars. Business logic, computed aliases, and event handling live in `NameView+Extensions.swift`.
+- **Scoping rule:** `BaseView` is for Pages (full screens) only. Components, sheet views, and embedded subviews do NOT conform — they receive state and closures from their parent. Don't retrofit a sheet with its own `ViewState` unless it genuinely loads data independently.
+
+## Daily Content Rotation
+
+For "fresh content every day" features (daily suggestions, daily picks), use seeded deterministic rotation instead of random selection or server round-trips:
+
+- Seed = stable per-user key + calendar day. Same seed → same picks all day for that user; different users see different content; it changes at midnight automatically.
+- Select from a local JSON bundle at init; score/filter items by user profile attributes, then take the top N under the seed-derived shuffle.
+- Cache the day's selected source IDs in the settings store (`lastFetchDate` + IDs). Same-day reloads reuse cached IDs and re-resolve against the current locale instead of re-selecting.
+- Track "seen" item IDs per user+date so rotation doesn't repeat within a window.
 
 ## Localization
 

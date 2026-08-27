@@ -47,18 +47,20 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" 2>/dev/null || exit; done &
 printf "\n%s\n" "────────────────────────────────────────"
 info "Removing symlinks…"
 
-files=(zshrc zprofile zprompt bashrc bash_profile bash_prompt aliases private)
+files=(zshrc zprofile bashrc bash_profile bash_prompt aliases private)
 for file in "${files[@]}"; do
     rm -f "${HOME}/.${file}" 2>/dev/null || true
 done
 
 rm -f "${HOME}/.aerospace.toml" 2>/dev/null || true
 
-config_dirs=(wezterm opencode nvim karabiner sketchybar)
+config_dirs=(wezterm opencode nvim karabiner sketchybar borders hunk kanata)
 for dir in "${config_dirs[@]}"; do
     target="${HOME}/.config/${dir}"
     [ -L "$target" ] && rm -f "$target" 2>/dev/null || true
 done
+
+rm -f "${HOME}/.config/starship.toml" 2>/dev/null || true
 
 rm -rf "${HOME}/.local/share/sketchybar_lua" 2>/dev/null || true
 

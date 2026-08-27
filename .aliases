@@ -9,6 +9,7 @@ alias dot="cd $HOME/dotfiles"
 alias dp="cd $HOME/Developer/personal"
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias gr="cd $HOME/Developer/personal/grow"
+alias cl="clear"
 
 # Detect which `ls` flavor is in use
 if ls --color >/dev/null 2>&1; then # GNU `ls`

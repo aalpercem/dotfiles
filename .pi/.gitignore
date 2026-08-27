@@ -1,0 +1,12 @@
+node_modules/
+package-lock.json
+
+# Pi runtime state (synced via symlink, not tracked)
+agent/auth.json
+agent/models-store.json
+agent/trust.json
+agent/settings.local.json
+agent/sessions/
+agent/bin/
+agent/mcp-cache.json
+agent/fff/

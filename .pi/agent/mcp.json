@@ -1,0 +1,12 @@
+{
+	"settings": {
+		"approveTools": ["computer_*"]
+	},
+	"mcpServers": {
+		"computer": {
+			"command": "open-computer-use",
+			"args": ["mcp"],
+			"requestTimeoutMs": 60000
+		}
+	}
+}

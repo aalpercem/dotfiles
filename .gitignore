@@ -17,11 +17,16 @@ Thumbs.db
 .private
 .gitconfig
 
+# Install logs
+install-*.log
+
 # Local agent/runtime state
 .serena/
 
 # OpenCode local secrets/state
 .config/opencode/opencode.json
+.config/opencode/service.json
+.config/opencode/.ponytail-active
 .config/opencode/node_modules/
 .config/opencode/package.json
 .config/opencode/bun.lock
@@ -32,3 +37,6 @@ Thumbs.db
 # Prevent nested repo metadata from accidental add
 .config/nvim/.git/
 .config/nvim/.gitignore
+
+# Personal scratch
+TODO.md

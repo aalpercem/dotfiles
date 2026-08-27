@@ -1,0 +1,21 @@
+{
+  "name": ".pi",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "agent/extensions/*"
+  ],
+  "scripts": {
+    "check": "npm run check --workspace=pi-save-md-extension && npm run check --workspace=pi-handoff-extension && npm run check --workspace=pi-worktrees-extension && npm run typecheck --workspace=pi-skill-toggle",
+    "test:save-md": "npm run test --workspace=pi-save-md-extension",
+    "test:handoff": "npm run test --workspace=pi-handoff-extension",
+    "test:worktrees": "npm run test --workspace=pi-worktrees-extension",
+    "test:skill-toggle": "npm run test --workspace=pi-skill-toggle"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "^0.84.2",
+    "@earendil-works/pi-coding-agent": "^0.84.2",
+    "@earendil-works/pi-tui": "^0.84.2",
+    "typebox": "^1.1.38"
+  }
+}

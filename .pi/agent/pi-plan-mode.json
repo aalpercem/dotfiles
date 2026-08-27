@@ -1,0 +1,4 @@
+{
+	"toggleShortcut": "alt+p",
+	"defaultPlanTools": ["read", "bash", "grep", "find", "ls", "ffgrep", "fffind"]
+}
