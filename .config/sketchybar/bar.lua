@@ -3,7 +3,7 @@ local colors = require("colors")
 LAYOUT_FULL = true
 
 sbar.bar({
-	topmost = "window",
+	topmost = "off",
 	height = 32,
 	color = LAYOUT_FULL and colors.bar.bg or 0x00000000,
 	border_width = 0,

@@ -24,7 +24,7 @@ config.font_size = 25
 config.color_scheme = "rose-pine"
 
 -- Dim inactive panes so focus is obvious
-config.inactive_pane_hsb = { saturation = 0.8, brightness = 0.75 }
+config.inactive_pane_hsb = { saturation = 0.7, brightness = 0.55 }
 
 -- Rose Pine colors from built-in scheme (fallback to catppuccin if unavailable)
 local scheme = wezterm.color.get_builtin_schemes()["rose-pine"]
@@ -49,6 +49,7 @@ config.hide_tab_bar_if_only_one_tab = false
 config.tab_max_width = 128
 
 config.colors = {
+	split = c.rose,
 	selection_fg = c.base,
 	selection_bg = c.rose,
 	tab_bar = {

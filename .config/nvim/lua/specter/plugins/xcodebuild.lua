@@ -161,7 +161,7 @@ return {
           success_sign = '✔',
           failure_sign = '✖',
           show_test_duration = true, -- e.g. "0.04s" next to the test name
-          show_diagnostics = true,   -- add test failures to vim diagnostics
+          show_diagnostics = true, -- add test failures to vim diagnostics
         },
 
         quickfix = {
@@ -173,7 +173,7 @@ return {
         test_explorer = {
           -- Side panel showing a tree of all tests (target → class → test).
           enabled = true,
-          auto_open = true,  -- open when tests start
+          auto_open = true, -- open when tests start
           auto_focus = true, -- jump cursor into the panel when it opens
           open_command = 'botright 42vsplit Test Explorer',
           open_expanded = true,
@@ -190,7 +190,7 @@ return {
 
         code_coverage = {
           -- Inline coverage signs after running tests with coverage enabled.
-          enabled = false, -- toggle on with :XcodebuildToggleCodeCoverage
+          enabled = true, -- toggle with :XcodebuildToggleCodeCoverage / <leader>xc
           file_pattern = '*.swift',
           covered_sign = '',
           partially_covered_sign = '┃',
@@ -259,7 +259,7 @@ return {
           -- xcode_build_server: automatically re-run `xcode-build-server config` when
           -- the scheme changes. This keeps sourcekit-lsp in sync with the project.
           xcode_build_server = {
-            enabled = false,
+            enabled = true,
             guess_scheme = false,
           },
 
@@ -267,7 +267,7 @@ return {
           -- through nvim-tree, neo-tree, or oil.nvim automatically updates the
           -- .xcodeproj file so you never have to open Xcode again.
           nvim_tree = {
-            enabled = true,
+            enabled = false, -- synchronized groups: never touch .pbxproj from nvim-tree
           },
           neo_tree = {
             enabled = false, -- not installed in this config

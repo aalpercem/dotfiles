@@ -229,6 +229,38 @@ Service mode'da sağ el tuşlarından birine bas → pencereyi workspace'e taş�
 
 ---
 
+## 13. Kanata (Software Key Remapper)
+
+**Kaynak:** `~/.config/kanata/kanata.kbd` (`process-unmapped-keys yes`)
+**Servis:** `homebrew.mxcl.kanata` (`sudo brew services restart kanata` ile reload)
+
+### Homerow Mods (tap-hold 100ms / 200ms)
+
+| Fiziksel Tuş | Tap (hızlı) | Hold (basılı tut) | Mod |
+|--------------|-------------|-------------------|-----|
+| `caps` | `caps` | `lctl+ralt` | Caps Lock -> Ctrl+Opt (Aerospace) |
+| `a` | `a` | `lmet` (Cmd) | Sol serçe |
+| `s` | `s` | `lalt` (Option) | Sol yüzük |
+| `d` | `d` | `lsft` (Shift) | Sol orta |
+| `f` | `f` | `lctl` (Ctrl) | Sol işaret |
+| `j` | `j` | `rctl` (Ctrl) | Sağ işaret |
+| `k` | `k` | `rsft` (Shift) | Sağ orta |
+| `l` | `l` | `ralt` (Option) | Sağ yüzük |
+| `;` | `;` | `;` | Değişmedi |
+| `lsft` | `esc` | `esc` | Sol Shift -> Esc |
+| `rsft` | `bspc` | `bspc` | Sağ Shift -> Backspace |
+
+### Epomaker Knob — Ses Kontrolü
+
+| Durum | Knob Çevirme | Adım | Açıklama |
+|-------|--------------|------|----------|
+| **Normal** | 1 diş | %18.75 (~%20) | `volu/voldwn x3` — 5-6 diş 0-100 |
+| **Shift+Option basılı** | 1 diş | %6.25 (~%6) | `volu/voldwn x4 çeyrek` — ince ayar |
+
+Shift+Option için **herhangi bir kombinasyon** geçerli: `lshift+lalt`, `lshift+ralt`, `rshift+lalt`, `rshift+ralt`. Homerow mods ile de çalışır (örn. `l` basılı=ralt + `k` basılı=rsft + knob). Epomaker knob hızlı çevirince tek event gönderdiği için normal mod 3x katlanarak telafi ediliyor. macOS native adım %6.25 (16 kademe), Shift+Option native %1.56 (64 kademe) — Kanata bunları katlayarak hedef değerlere çıkarıyor.
+
+---
+
 ## 14. Çakışma (Conflict) Analizi
 
 | Kısayol | Sahibi | Çakışma? |
@@ -281,6 +313,7 @@ Service mode'da sağ el tuşlarından birine bas → pencereyi workspace'e taş�
 | `Alt + Shift + y/u/i/o` | `Caps Lock + u/i/o/p` | Aerospace move (Caps Lock üst sıra) | 2026-06-19 |
 | `Caps Lock + u/i/o/p` | *kaldırıldı* | Aerospace WS 6-9 (move'e devredildi) | 2026-06-19 |
 | — | `Ctrl+Shift+F/S/D` | Homerow click/search/scroll | 2026-07-08 (yeni) |
+| — | Kanata knob (`@vu`/`@vd`) | Volume normal %20 / Shift+Option %6 (Epomaker tek-event telafisi) | 2026-08-27 |
 
 ## 17. Toplu İstatistik
 
@@ -297,4 +330,5 @@ Service mode'da sağ el tuşlarından birine bas → pencereyi workspace'e taş�
 | **Aerospace** | 31 |
 | **Homerow** | 3 |
 | **Karabiner** | 1 |
-| **Toplam** | **109** |
+| **Kanata** | 13 (11 homerow mods + 2 knob) |
+| **Toplam** | **122** |

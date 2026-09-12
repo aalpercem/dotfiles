@@ -3,7 +3,7 @@
 )
 
 (defsrc
-  caps a s d f j k l ; lsft rsft
+  caps a s d f j k l ; lsft rsft volu voldwn
 )
 
 (defvar
@@ -23,8 +23,23 @@
   ; (tap-hold $tap-time $hold-time ; rmet)
   ls_esc esc
   rs_bsp bspc
+  ;; knob: normal %20 (~3 ticks), shift+option %6 (~1 tick)
+  vu (switch
+    ((and lsft lalt)) (multi volu volu volu volu) break
+    ((and lsft ralt)) (multi volu volu volu volu) break
+    ((and rsft lalt)) (multi volu volu volu volu) break
+    ((and rsft ralt)) (multi volu volu volu volu) break
+    () (multi volu volu volu) break
+  )
+  vd (switch
+    ((and lsft lalt)) (multi voldwn voldwn voldwn voldwn) break
+    ((and lsft ralt)) (multi voldwn voldwn voldwn voldwn) break
+    ((and rsft lalt)) (multi voldwn voldwn voldwn voldwn) break
+    ((and rsft ralt)) (multi voldwn voldwn voldwn voldwn) break
+    () (multi voldwn voldwn voldwn) break
+  )
 )
 
 (deflayer base
-  @capl @a @s @d @f @j @k @l @; @ls_esc @rs_bsp
+  @capl @a @s @d @f @j @k @l @; @ls_esc @rs_bsp @vu @vd
 )

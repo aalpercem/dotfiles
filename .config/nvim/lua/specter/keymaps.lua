@@ -62,6 +62,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Picker & project manager
 vim.keymap.set('n', '<leader>X', '<cmd>XcodebuildPicker<cr>', { desc = 'Xcodebuild: Show all actions' })
 vim.keymap.set('n', '<leader>xf', '<cmd>XcodebuildProjectManager<cr>', { desc = 'Xcodebuild: Project Manager' })
+vim.keymap.set('n', '<leader>xA', '<cmd>XcodebuildAssetsManager<cr>', { desc = 'Xcodebuild: Asset Manager' })
 
 -- Build & run
 vim.keymap.set('n', '<leader>xb', '<cmd>XcodebuildBuild<cr>', { desc = 'Xcodebuild: Build' })

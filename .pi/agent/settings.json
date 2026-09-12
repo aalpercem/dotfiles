@@ -2,8 +2,8 @@
   "lastChangelogVersion": "0.84.2",
   "theme": "colorsafe",
   "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash",
-  "defaultThinkingLevel": "low",
+  "defaultModel": "muse-spark-1.2-contributor-free",
+  "defaultThinkingLevel": "medium",
   "tuiMode": "fullscreen",
   "packages": [
     "npm:@dietrichgebert/ponytail",
